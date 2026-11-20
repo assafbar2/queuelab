@@ -1,0 +1,1445 @@
+{
+  "split": "holdout",
+  "openings": [
+    {
+      "id": "holdout-01",
+      "ticket": "The warehouse loader is waiting for today's manifest; there is nothing in the intake directory.",
+      "worlds": [
+        {
+          "id": "holdout-01-1",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (01:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-01-2",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-02",
+      "ticket": "We have a gap in the nightly account extracts. Can you tell us where to look?",
+      "worlds": [
+        {
+          "id": "holdout-02-1",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 02:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-19/old"
+            ],
+            "expected_destination": [
+              "expected",
+              "holdout-archive-19/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "expected_destination"
+            ]
+          ],
+          "ask_useful": true
+        },
+        {
+          "id": "holdout-02-2",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 02:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-03",
+      "ticket": "The on-call analyst flagged that the 03:00 telemetry drop hasn't shown up.",
+      "worlds": [
+        {
+          "id": "holdout-03-1",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-03-2",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-04",
+      "ticket": "No export attachment came through for the weekly settlement. Do you see anything on your side?",
+      "worlds": [
+        {
+          "id": "holdout-04-1",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 04:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-04-2",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (04:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-05",
+      "ticket": "Yesterday we had a reconciliation file. Today the receiving job timed out waiting for it.",
+      "worlds": [
+        {
+          "id": "holdout-05-1",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-05-2",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 05:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-22/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-22/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-06",
+      "ticket": "The audit team expected a fresh snapshot after the maintenance window. Their bucket is empty.",
+      "worlds": [
+        {
+          "id": "holdout-06-1",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (06:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-06-2",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-07",
+      "ticket": "The upstream dashboard looks healthy, but the customer inventory snapshot is absent.",
+      "worlds": [
+        {
+          "id": "holdout-07-1",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 07:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-24/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-24/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-07-2",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 07:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-08",
+      "ticket": "The month rolled over and our compliance handoff is still missing the scheduled extract.",
+      "worlds": [
+        {
+          "id": "holdout-08-1",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-08-2",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-09",
+      "ticket": "We didn't get a new CSV for the overnight backfill. Please check the job, not just the notifications.",
+      "worlds": [
+        {
+          "id": "holdout-09-1",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 01:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-09-2",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (01:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-10",
+      "ticket": "The carrier integration has nothing to ingest this morning. It depends on your dispatch export.",
+      "worlds": [
+        {
+          "id": "holdout-10-1",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-10-2",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 02:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-27/old"
+            ],
+            "expected_destination": [
+              "expected",
+              "holdout-archive-27/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "expected_destination"
+            ]
+          ],
+          "ask_useful": true
+        }
+      ]
+    },
+    {
+      "id": "holdout-11",
+      "ticket": "Can you trace the missing activity dump for the last shift? Nobody here received it.",
+      "worlds": [
+        {
+          "id": "holdout-11-1",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (03:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-11-2",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-12",
+      "ticket": "We're trying to close out the quarter and the final batch of line items isn't in the folder.",
+      "worlds": [
+        {
+          "id": "holdout-12-1",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 04:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-29/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-29/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-12-2",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 04:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-13",
+      "ticket": "A downstream alert says the attendance export is stale. Is there a record of today's delivery?",
+      "worlds": [
+        {
+          "id": "holdout-13-1",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-13-2",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-14",
+      "ticket": "We rotated the destination last night. The availability report didn't land where we expected.",
+      "worlds": [
+        {
+          "id": "holdout-14-1",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 06:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-14-2",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (06:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-15",
+      "ticket": "The delivery we're chasing is two weeks old. Can you still check whether it made it out?",
+      "worlds": [
+        {
+          "id": "holdout-15-1",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-15-2",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 07:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-32/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-32/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-16",
+      "ticket": "The bulk user list never reached the file watcher. It was supposed to arrive before standup.",
+      "worlds": [
+        {
+          "id": "holdout-16-1",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (08:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-16-2",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-17",
+      "ticket": "We've been watching the destination since six, but no updated claims extract has arrived.",
+      "worlds": [
+        {
+          "id": "holdout-17-1",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 01:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-34/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-34/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-17-2",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 01:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-18",
+      "ticket": "The automated import ran against an old file because a new reservations export wasn't present.",
+      "worlds": [
+        {
+          "id": "holdout-18-1",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-18-2",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-19",
+      "ticket": "Nothing turned up for the weekend meter export. We need to decide whether to retry it.",
+      "worlds": [
+        {
+          "id": "holdout-19-1",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 03:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-19-2",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (03:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-20",
+      "ticket": "The error feed usually lands on a schedule. There is a hole between Thursday and Saturday.",
+      "worlds": [
+        {
+          "id": "holdout-20-1",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-20-2",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 04:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-37/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-37/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-21",
+      "ticket": "Can you find the batch of renewal events that the receiving system couldn't locate?",
+      "worlds": [
+        {
+          "id": "holdout-21-1",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (05:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-21-2",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-22",
+      "ticket": "The team is ready to process today's contract report, but the location we checked has no file.",
+      "worlds": [
+        {
+          "id": "holdout-22-1",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 06:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-39/old"
+            ],
+            "expected_destination": [
+              "expected",
+              "holdout-archive-39/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "expected_destination"
+            ]
+          ],
+          "ask_useful": true
+        },
+        {
+          "id": "holdout-22-2",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 06:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-23",
+      "ticket": "Monday's archive didn't make it to the shared inbox. What evidence is available?",
+      "worlds": [
+        {
+          "id": "holdout-23-1",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-23-2",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-24",
+      "ticket": "After moving the integration, we can't find the scheduled line-items output.",
+      "worlds": [
+        {
+          "id": "holdout-24-1",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 08:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-24-2",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (08:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-25",
+      "ticket": "The nightly roster is missing, and we're not sure whether to change a setting or wait.",
+      "worlds": [
+        {
+          "id": "holdout-25-1",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-25-2",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 01:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-42/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-42/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-26",
+      "ticket": "Our downstream index isn't current. The hourly export it consumes hasn't arrived.",
+      "worlds": [
+        {
+          "id": "holdout-26-1",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (02:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-26-2",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-27",
+      "ticket": "We can't match the payout register to today's balance because the scheduled file is missing.",
+      "worlds": [
+        {
+          "id": "holdout-27-1",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 03:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-44/old"
+            ],
+            "destination": [
+              "expected",
+              "holdout-archive-44/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "destination"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-27-2",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 03:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-28",
+      "ticket": "The analyst asked for yesterday's shipment history, but the scheduled batch is absent.",
+      "worlds": [
+        {
+          "id": "holdout-28-1",
+          "finding": "run_failed",
+          "records": {
+            "runs": [
+              "failed",
+              "A worker error interrupted generation before the file was written."
+            ]
+          },
+          "paths": [
+            [
+              "runs"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-28-2",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-29",
+      "ticket": "The operations handoff notes say a new file should be there. The receiving service found nothing.",
+      "worlds": [
+        {
+          "id": "holdout-29-1",
+          "finding": "delivery_blocked",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 05:00."
+            ],
+            "delivery": [
+              "access_denied",
+              "The receiving service refused the write; permission denied."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-29-2",
+          "finding": "schedule_disabled",
+          "records": {
+            "runs": [
+              "no_run",
+              "No invocation logged since the last scheduled window (05:00)."
+            ],
+            "schedule": [
+              "disabled",
+              "Automatic dispatch is switched off for this account."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "schedule"
+            ]
+          ],
+          "ask_useful": false
+        }
+      ]
+    },
+    {
+      "id": "holdout-30",
+      "ticket": "No export appeared at the new drop point. Please check what happened before we rerun it.",
+      "worlds": [
+        {
+          "id": "holdout-30-1",
+          "finding": "undetermined",
+          "records": {
+            "runs": [
+              "unavailable",
+              "No retained records cover this delivery window."
+            ],
+            "delivery": [
+              "unavailable",
+              "No receipt is available."
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery"
+            ]
+          ],
+          "ask_useful": false
+        },
+        {
+          "id": "holdout-30-2",
+          "finding": "destination_mismatch",
+          "records": {
+            "runs": [
+              "completed",
+              "The output file was generated successfully at 06:00."
+            ],
+            "delivery": [
+              "sent",
+              "holdout-archive-47/old"
+            ],
+            "expected_destination": [
+              "expected",
+              "holdout-archive-47/new"
+            ]
+          },
+          "paths": [
+            [
+              "runs",
+              "delivery",
+              "expected_destination"
+            ]
+          ],
+          "ask_useful": true
+        }
+      ]
+    }
+  ]
+}

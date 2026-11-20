@@ -1,6 +1,6 @@
 # QueueLab v1: train a miniature support investigator
 
-**Deliverable in this repository today:** a specification. All datasets, traces, metrics, interfaces, and release artifacts below are proposed unless explicitly identified as examples. There are no trained weights or observed results yet.
+**Current stage: local post-training experiment.** The repository includes the scripted pilot and a [local run](../reports/post-training-2026-11-20/README.md) with real LoRA adapters for Falcon and SmolLM2. The run holds out new openings from known failure families. The independent corpus review and broader sealed benchmark described below are still future work.
 
 ## The experiment
 
@@ -51,7 +51,7 @@ The grader accepts alternate evidence-backed paths. It checks the terminal findi
 
 ## Post-training recipe
 
-**Proposed base:** [`HuggingFaceTB/SmolLM2-1.7B-Instruct`](https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct/tree/31b70e2e869a7173562077fd711b654946d38674), pinned revision `31b70e2e869a7173562077fd711b654946d38674`. Use that revision and tokenizer for both arms. Check model, dataset and adapter redistribution terms before any public release.
+**Pilot candidates:** try [`tiiuae/Falcon-H1-Tiny-Tool-Calling-90M`](https://huggingface.co/tiiuae/Falcon-H1-Tiny-Tool-Calling-90M/tree/fc099d791a229464b995fdd2fd24e8ffd2d699e8) first (`--backend falcon`). The original [`HuggingFaceTB/SmolLM2-1.7B-Instruct`](https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct/tree/31b70e2e869a7173562077fd711b654946d38674) is a fallback (`--backend smol`). Decide on the development pilot, then use the selected model and tokenizer revision for both benchmark arms. Check model, dataset and adapter redistribution terms before public release. An adapter alone is not a standalone model.
 
 1. Run the unchanged model on the development pilot with a reasonable investigation prompt. Compare a simple evidence-first rule as a harness sanity check. Train only after the pilot identifies a recurring, learnable error; if it does not, revisit the task, not the leaderboard.
 2. Freeze the base weights. Use supervised fine-tuning on expert **assistant action tokens only**, masking system prompts, customer turns, tool responses and padding. Unit-test the loss mask on a multi-turn example; skip overlength examples rather than truncating away the evidence or target without notice.
@@ -61,6 +61,8 @@ The grader accepts alternate evidence-backed paths. It checks the terminal findi
 ## What counts as evidence
 
 Run base and base-plus-adapter on the **same** held-out worlds with the same prompt, examples, tools, turn limit, precision, and greedy decoding settings. Reset tool state and caches between episodes. Cap generated tokens per action identically. Record seed, environment and full visible trace for each arm. Do not silently drop parse errors, escalations, or timeouts.
+
+The grader must reproduce the stored verdicts from raw action traces and pinned fixture content without loading model weights. Fresh generations on a different device or software build need not be identical; compare both conditions in the same environment and publish its details. In the structured pilot, the unsupported-claim count covers parsed recommendations without grounding, not arbitrary prose in malformed output; malformed actions still count as invalid.
 
 | Measure | Definition |
 | --- | --- |
@@ -75,7 +77,11 @@ Publish raw numerator/denominator, paired base-to-adapter changes, exposure to m
 
 ## Reader experience and deliverables
 
-A browser replay starts on a ticket, shows base and adapted actions side by side, opens the evidence each saw, then reveals what really happened and why each verdict was scored. Use saved traces from actual runs and label them as replays, not live inference. Include a regression or tie when available and link the complete scorecard. No login, helpdesk integration or API key for the reader. A future book link is a separate publication decision.
+The public release has three entry points, all sourced from one repository:
+
+- **View:** GitHub Pages serves static HTML, CSS, JavaScript, and saved JSON traces from `docs/demo/`. The pilot shows one trace at a time; after evaluation, show base and adapted actions side by side. Let readers step through the evidence, switch between sibling scenarios, and reveal the verdict. Label the scripted reference as such; label all saved runs as replays, not live inference. Include a regression or tie when available and link the full scorecard. Viewers need no login, model, helpdesk connection, or API key.
+- **Evaluate or audit:** publish one Python CLI and a pinned dependency lock. Allow model runs locally (CPU first, CUDA optional) or via a Colab notebook calling the same CLI. Only the compute runtime needs the weights. Anyone can use the model-free `rescore` command to reconstruct tool observations, grades, and totals from a saved trace. For a released scorecard, publish the exact fixture snapshot after sealed evaluation is complete.
+- **Retrain (after the gate):** add a training command and notebook cell once reviewed data, token-mask validation, and the pilot error analysis are ready. Publish the recipe, permitted adapter artifacts, and reproducibility metadata. Use a local runtime or cloud GPU runtime; no live inference service is required. Obtain budget approval before paid compute.
 
 | Stage | Deliverable and acceptance check |
 | --- | --- |
@@ -84,6 +90,6 @@ A browser replay starts on a ticket, shows base and adapted actions side by side
 | 3. First adapter | Reproducible training command, weights or authorized artifact reference, hashes, metrics, and model card. Reload in a fresh process; confirm the base-only control uses no adapter. |
 | 4. Evaluation and demo | One command scores both arms. Report every held-out episode and validate that a fresh replay reproduces the stored actions and scores. Show results even when they do not favor training. |
 
-Planned ownership: `fixtures/` and `data/` for worlds and reviewed splits; `harness/` for simulation and grading; `training/` for the recipe; `reports/` and `demo/` for the scorecard and replay. These paths describe future implementation, not files already present.
+Repository layout: `fixtures/` for draft worlds; `harness/` for simulation, grading and the CLI; `notebooks/` for cloud entry points; `docs/demo/` for the static replay. `data/`, `training/`, and the official release scorecard are later deliverables.
 
-**First task:** author the export example and nine more paired openings, then run the unmodified baseline. No web UI, hosted inference, preference optimization, scratch pretraining, real customer actions, or general-purpose support chatbot is needed to reach that milestone.
+**Pilot gate:** practitioner-review the ten draft openings and analyze the full unchanged-model trace with the reference as a harness check. Proceed to training only when the team identifies a recurring, learnable error. The lightweight static replay is not a gate for pilot scoring; live hosting, preference optimization, scratch pretraining, and production actions are out of scope.

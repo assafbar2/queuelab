@@ -1,0 +1,52 @@
+Started 2026-11-20T08:52:21Z
+$ HF_HOME=/tmp/queuelab-hf-cache OMP_NUM_THREADS=1 .venv/bin/python -m harness probe-falcon --offline
+The fast path is not available because one of `(selective_state_update, causal_conv1d_fn, causal_conv1d_update)` is None. Falling back to the naive implementation. To install follow https://github.com/state-spaces/mamba/#installation and https://github.com/Dao-AILab/causal-conv1d
+{
+  "kind": "one-action diagnostic (not a benchmark)",
+  "model": "tiiuae/Falcon-H1-Tiny-Tool-Calling-90M",
+  "revision": "fc099d791a229464b995fdd2fd24e8ffd2d699e8",
+  "device": "cpu",
+  "precision": "float32",
+  "torch": "2.15.0",
+  "transformers": "4.57.6",
+  "max_new_tokens": 128,
+  "decoding": "greedy",
+  "seed": 42,
+  "prompt": "Customer: Our nightly export stopped arriving after the upgrade.\nFirst, use inspect with source runs to check whether the export ran.",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "inspect",
+        "description": "Read one kind of record from the simulated export system.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "enum": [
+                "runs",
+                "schedule",
+                "delivery",
+                "destination"
+              ]
+            }
+          },
+          "required": [
+            "source"
+          ]
+        }
+      }
+    }
+  ],
+  "raw": "<tool_call>\n{\"name\": \"inspect\", \"arguments\":{\"source\": \"export\"}}\n</tool_call>\n",
+  "stop_token": "<|im_end|>",
+  "expected_call": {
+    "name": "inspect",
+    "arguments": {
+      "source": "runs"
+    }
+  },
+  "matched_expected_call": false
+}
+Finished 2026-11-20T08:53:00Z

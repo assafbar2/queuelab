@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QueueLab | Investigation replay</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="replay.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">QueueLab / Development pilot</p>
+      <h1>What did it check?</h1>
+      <p>One complaint can have different causes. Follow the evidence before revealing the verdict.</p>
+    </header>
+    <section aria-label="Replay controls">
+      <p id="status" role="status">Opening saved report…</p>
+      <div class="controls">
+        <label>Ticket <select id="ticket" disabled></select></label>
+        <label>Scenario <select id="scenario" disabled></select></label>
+        <label class="upload">Open another report <input id="upload" type="file" accept=".json,application/json"></label>
+      </div>
+    </section>
+    <section id="case" aria-label="Investigation" hidden>
+      <blockquote id="complaint"></blockquote>
+      <div class="controls">
+        <button id="advance" type="button">Show next action</button>
+        <button id="reveal" type="button">Reveal verdict</button>
+      </div>
+      <ol id="turns" aria-live="polite"></ol>
+      <section id="verdict" aria-live="polite" hidden></section>
+    </section>
+    <footer><a id="scorecard" href="pilot.json">Download bundled scorecard and traces</a></footer>
+  </main>
+</body>
+</html>

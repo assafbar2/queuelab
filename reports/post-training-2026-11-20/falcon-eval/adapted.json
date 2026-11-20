@@ -1,0 +1,5061 @@
+{
+  "schema_version": 1,
+  "split": "holdout",
+  "fixture_sha256": "8e0da66ffe7f9f214e2a68a76e0d1f29519c210306495088d9daffa948febd0d",
+  "opening_ids": [
+    "holdout-01",
+    "holdout-02",
+    "holdout-03",
+    "holdout-04",
+    "holdout-05",
+    "holdout-06",
+    "holdout-07",
+    "holdout-08",
+    "holdout-09",
+    "holdout-10",
+    "holdout-11",
+    "holdout-12",
+    "holdout-13",
+    "holdout-14",
+    "holdout-15",
+    "holdout-16",
+    "holdout-17",
+    "holdout-18",
+    "holdout-19",
+    "holdout-20",
+    "holdout-21",
+    "holdout-22",
+    "holdout-23",
+    "holdout-24",
+    "holdout-25",
+    "holdout-26",
+    "holdout-27",
+    "holdout-28",
+    "holdout-29",
+    "holdout-30"
+  ],
+  "backend": {
+    "label": "adapted",
+    "model": "tiiuae/Falcon-H1-Tiny-Tool-Calling-90M",
+    "revision": "fc099d791a229464b995fdd2fd24e8ffd2d699e8",
+    "adapter_sha256": "8e4c51fc287e9992d28bc5f259e6efa6b72a78561d5a13e196cd666f1f9a3d6a",
+    "max_action_tokens": 96,
+    "decoding": "greedy"
+  },
+  "seconds": 62.29,
+  "episodes": [
+    {
+      "opening_id": "holdout-01",
+      "world_id": "holdout-01-1",
+      "opening": {
+        "customer_message": "The warehouse loader is waiting for today's manifest; there is nothing in the intake directory.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5bd013c9d3fa",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (01:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-3fa52365d439",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-66fa7f5510a3",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-5bd013c9d3fa\", \"obs-3fa52365d439\", \"obs-66fa7f5510a3\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-5bd013c9d3fa",
+              "obs-3fa52365d439",
+              "obs-66fa7f5510a3"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-01",
+      "world_id": "holdout-01-2",
+      "opening": {
+        "customer_message": "The warehouse loader is waiting for today's manifest; there is nothing in the intake directory.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-d86aa59d2c68",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-33b162027d5b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c4fd4aaf39f1",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c4fd4aaf39f1",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c4fd4aaf39f1",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-d86aa59d2c68\", \"obs-33b162027d5b\", \"obs-c4fd4aaf39f1\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-d86aa59d2c68",
+              "obs-33b162027d5b",
+              "obs-c4fd4aaf39f1"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": false,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-02",
+      "world_id": "holdout-02-1",
+      "opening": {
+        "customer_message": "We have a gap in the nightly account extracts. Can you tell us where to look?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-fb7e5a4e9ebb",
+            "status": "completed",
+            "value": "The output file was generated successfully at 02:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-e0d56d3d4fc8",
+            "status": "sent",
+            "value": "holdout-archive-19/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-47fc500cddfb",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-47fc500cddfb",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-47fc500cddfb",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"destination_mismatch\", \"next_step\": \"recover_diagnostic_records\", \"evidence\": [\"obs-fb7e5a4e9ebb\", \"obs-e0d56d3d4fc8\", \"obs-47fc500cddfb\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "destination_mismatch",
+            "next_step": "recover_diagnostic_records",
+            "evidence": [
+              "obs-fb7e5a4e9ebb",
+              "obs-e0d56d3d4fc8",
+              "obs-47fc500cddfb"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-02",
+      "world_id": "holdout-02-2",
+      "opening": {
+        "customer_message": "We have a gap in the nightly account extracts. Can you tell us where to look?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-53889f3091f1",
+            "status": "completed",
+            "value": "The output file was generated successfully at 02:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-ac73332b28ba",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-2efd9933ed52",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-53889f3091f1\", \"obs-ac73332b28ba\", \"obs-2efd9933ed52\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-53889f3091f1",
+              "obs-ac73332b28ba",
+              "obs-2efd9933ed52"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-03",
+      "world_id": "holdout-03-1",
+      "opening": {
+        "customer_message": "The on-call analyst flagged that the 03:00 telemetry drop hasn't shown up.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-fec930d1c68e",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-22e0053d73f4",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-40d263cb1144",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-fec930d1c68e\", \"obs-22e0053d73f4\", \"obs-40d263cb1144\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-fec930d1c68e",
+              "obs-22e0053d73f4",
+              "obs-40d263cb1144"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-03",
+      "world_id": "holdout-03-2",
+      "opening": {
+        "customer_message": "The on-call analyst flagged that the 03:00 telemetry drop hasn't shown up.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-495f27041a1b",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-1a5a57b264d8",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"undetermined\", \"next_step\": \"recover_diagnostic_records\", \"evidence\": [\"obs-495f27041a1b\", \"obs-1a5a57b264d8\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "undetermined",
+            "next_step": "recover_diagnostic_records",
+            "evidence": [
+              "obs-495f27041a1b",
+              "obs-1a5a57b264d8"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-04",
+      "world_id": "holdout-04-1",
+      "opening": {
+        "customer_message": "No export attachment came through for the weekly settlement. Do you see anything on your side?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-28e9b14fec4f",
+            "status": "completed",
+            "value": "The output file was generated successfully at 04:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-12b94e13a28e",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-701a61c5f22e",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-701a61c5f22e",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-701a61c5f22e",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-28e9b14fec4f\", \"obs-12b94e13a28e\", \"obs-701a61c5f22e\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-28e9b14fec4f",
+              "obs-12b94e13a28e",
+              "obs-701a61c5f22e"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-04",
+      "world_id": "holdout-04-2",
+      "opening": {
+        "customer_message": "No export attachment came through for the weekly settlement. Do you see anything on your side?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-9ebf5e68c5da",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (04:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-0d4ff99534e8",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ca32b48cedff",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-9ebf5e68c5da\", \"obs-0d4ff99534e8\", \"obs-ca32b48cedff\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-9ebf5e68c5da",
+              "obs-0d4ff99534e8",
+              "obs-ca32b48cedff"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-05",
+      "world_id": "holdout-05-1",
+      "opening": {
+        "customer_message": "Yesterday we had a reconciliation file. Today the receiving job timed out waiting for it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-56e6ede49518",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-f51d497a7c54",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ab7de3147f64",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ab7de3147f64",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ab7de3147f64",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"undetermined\", \"next_step\": \"recover_diagnostic_records\", \"evidence\": [\"obs-56e6ede49518\", \"obs-f51d497a7c54\", \"obs-ab7de3147f64\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "undetermined",
+            "next_step": "recover_diagnostic_records",
+            "evidence": [
+              "obs-56e6ede49518",
+              "obs-f51d497a7c54",
+              "obs-ab7de3147f64"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-05",
+      "world_id": "holdout-05-2",
+      "opening": {
+        "customer_message": "Yesterday we had a reconciliation file. Today the receiving job timed out waiting for it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-c23fc4a1a657",
+            "status": "completed",
+            "value": "The output file was generated successfully at 05:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-db556c4b3361",
+            "status": "sent",
+            "value": "holdout-archive-22/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ea421ca138e0",
+            "status": "expected",
+            "value": "holdout-archive-22/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ea421ca138e0",
+            "status": "expected",
+            "value": "holdout-archive-22/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-db556c4b3361",
+            "status": "sent",
+            "value": "holdout-archive-22/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ea421ca138e0",
+            "status": "expected",
+            "value": "holdout-archive-22/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-06",
+      "world_id": "holdout-06-1",
+      "opening": {
+        "customer_message": "The audit team expected a fresh snapshot after the maintenance window. Their bucket is empty.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-096c65c0deb9",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (06:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-3cdf8c4ed8d1",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-124661433108",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-124661433108",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-124661433108",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-096c65c0deb9\", \"obs-3cdf8c4ed8d1\", \"obs-124661433108\", \"obs-1246614331",
+          "action": null,
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": false,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-06",
+      "world_id": "holdout-06-2",
+      "opening": {
+        "customer_message": "The audit team expected a fresh snapshot after the maintenance window. Their bucket is empty.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-4d219c6dfa6e",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-fc9b5c448c2f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-25757da3128f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-25757da3128f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-25757da3128f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-4d219c6dfa6e\", \"obs-fc9b5c448c2f\", \"obs-25757da3128f\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-4d219c6dfa6e",
+              "obs-fc9b5c448c2f",
+              "obs-25757da3128f"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-07",
+      "world_id": "holdout-07-1",
+      "opening": {
+        "customer_message": "The upstream dashboard looks healthy, but the customer inventory snapshot is absent.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-7441bb10dd3c",
+            "status": "completed",
+            "value": "The output file was generated successfully at 07:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-f9b73bcde410",
+            "status": "sent",
+            "value": "holdout-archive-24/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-a2ef81ca3c72",
+            "status": "expected",
+            "value": "holdout-archive-24/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-a2ef81ca3c72",
+            "status": "expected",
+            "value": "holdout-archive-24/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-f9b73bcde410",
+            "status": "sent",
+            "value": "holdout-archive-24/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-a2ef81ca3c72",
+            "status": "expected",
+            "value": "holdout-archive-24/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-07",
+      "world_id": "holdout-07-2",
+      "opening": {
+        "customer_message": "The upstream dashboard looks healthy, but the customer inventory snapshot is absent.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ce5a1a53db91",
+            "status": "completed",
+            "value": "The output file was generated successfully at 07:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-614ea2fb620c",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-61ce3db20bfe",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-ce5a1a53db91\", \"obs-614ea2fb620c\", \"obs-61ce3db20bfe\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-ce5a1a53db91",
+              "obs-614ea2fb620c",
+              "obs-61ce3db20bfe"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-08",
+      "world_id": "holdout-08-1",
+      "opening": {
+        "customer_message": "The month rolled over and our compliance handoff is still missing the scheduled extract.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-83966cd2e61c",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-2aa5946c8c93",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-d9307746045c",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-83966cd2e61c\", \"obs-2aa5946c8c93\", \"obs-d9307746045c\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-83966cd2e61c",
+              "obs-2aa5946c8c93",
+              "obs-d9307746045c"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-08",
+      "world_id": "holdout-08-2",
+      "opening": {
+        "customer_message": "The month rolled over and our compliance handoff is still missing the scheduled extract.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-888e1dfbcf96",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-6376011ceb1b",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-18422a41e29f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-18422a41e29f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-18422a41e29f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-888e1dfbcf96\", \"obs-6376011ceb1b\", \"obs-18422a41e29f\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-888e1dfbcf96",
+              "obs-6376011ceb1b",
+              "obs-18422a41e29f"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-09",
+      "world_id": "holdout-09-1",
+      "opening": {
+        "customer_message": "We didn't get a new CSV for the overnight backfill. Please check the job, not just the notifications.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-93798b15cbae",
+            "status": "completed",
+            "value": "The output file was generated successfully at 01:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-b83323737452",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-5397b2e8bcba",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-93798b15cbae\", \"obs-b83323737452\", \"obs-5397b2e8bcba\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-93798b15cbae",
+              "obs-b83323737452",
+              "obs-5397b2e8bcba"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-09",
+      "world_id": "holdout-09-2",
+      "opening": {
+        "customer_message": "We didn't get a new CSV for the overnight backfill. Please check the job, not just the notifications.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-3e9ceb06ae3a",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (01:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-0131f673a79d",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-3957548fab52",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-3957548fab52",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-3957548fab52",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-3e9ceb06ae3a\", \"obs-0131f673a79d\", \"obs-3957548fab52\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-3e9ceb06ae3a",
+              "obs-0131f673a79d",
+              "obs-3957548fab52"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-10",
+      "world_id": "holdout-10-1",
+      "opening": {
+        "customer_message": "The carrier integration has nothing to ingest this morning. It depends on your dispatch export.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-a5c5667dc1b5",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-654bd91f78e5",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-6e9de371982d",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-6e9de371982d",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-6e9de371982d",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-a5c5667dc1b5\", \"obs-654bd91f78e5\", \"obs-6e9de371982d\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-a5c5667dc1b5",
+              "obs-654bd91f78e5",
+              "obs-6e9de371982d"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-10",
+      "world_id": "holdout-10-2",
+      "opening": {
+        "customer_message": "The carrier integration has nothing to ingest this morning. It depends on your dispatch export.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-a3d41641292c",
+            "status": "completed",
+            "value": "The output file was generated successfully at 02:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-d736f0242699",
+            "status": "sent",
+            "value": "holdout-archive-27/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-1601ca94f655",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-1601ca94f655",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-1601ca94f655",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-1601ca94f655",
+            "status": "unavailable",
+            "value": null
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-11",
+      "world_id": "holdout-11-1",
+      "opening": {
+        "customer_message": "Can you trace the missing activity dump for the last shift? Nobody here received it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-641a69798a8c",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (03:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-568ddb5a235f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-3a6ea0fbb4ef",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-641a69798a8c\", \"obs-568ddb5a235f\", \"obs-3a6ea0fbb4ef\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-641a69798a8c",
+              "obs-568ddb5a235f",
+              "obs-3a6ea0fbb4ef"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-11",
+      "world_id": "holdout-11-2",
+      "opening": {
+        "customer_message": "Can you trace the missing activity dump for the last shift? Nobody here received it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-98983008a25d",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-ae5d3f92d345",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-2e6df44af9bc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-98983008a25d\", \"obs-ae5d3f92d345\", \"obs-2e6df44af9bc\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-98983008a25d",
+              "obs-ae5d3f92d345",
+              "obs-2e6df44af9bc"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-12",
+      "world_id": "holdout-12-1",
+      "opening": {
+        "customer_message": "We're trying to close out the quarter and the final batch of line items isn't in the folder.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-717640c57953",
+            "status": "completed",
+            "value": "The output file was generated successfully at 04:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-644fb1fe494f",
+            "status": "sent",
+            "value": "holdout-archive-29/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-0feafe0470fa",
+            "status": "expected",
+            "value": "holdout-archive-29/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-0feafe0470fa",
+            "status": "expected",
+            "value": "holdout-archive-29/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-644fb1fe494f",
+            "status": "sent",
+            "value": "holdout-archive-29/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-0feafe0470fa",
+            "status": "expected",
+            "value": "holdout-archive-29/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-12",
+      "world_id": "holdout-12-2",
+      "opening": {
+        "customer_message": "We're trying to close out the quarter and the final batch of line items isn't in the folder.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-4b6ea935815d",
+            "status": "completed",
+            "value": "The output file was generated successfully at 04:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-fabd6783908e",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-44f5038b1114",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-4b6ea935815d\", \"obs-fabd6783908e\", \"obs-44f5038b1114\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-4b6ea935815d",
+              "obs-fabd6783908e",
+              "obs-44f5038b1114"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-13",
+      "world_id": "holdout-13-1",
+      "opening": {
+        "customer_message": "A downstream alert says the attendance export is stale. Is there a record of today's delivery?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-e91f5983b98e",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-fafe707e8c37",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-f9fadea4d9df",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-e91f5983b98e\", \"obs-fafe707e8c37\", \"obs-f9fadea4d9df\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-e91f5983b98e",
+              "obs-fafe707e8c37",
+              "obs-f9fadea4d9df"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-13",
+      "world_id": "holdout-13-2",
+      "opening": {
+        "customer_message": "A downstream alert says the attendance export is stale. Is there a record of today's delivery?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-dd6064a2e697",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-8527695edc76",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-4106647d05fc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-dd6064a2e697\", \"obs-8527695edc76\", \"obs-4106647d05fc\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-dd6064a2e697",
+              "obs-8527695edc76",
+              "obs-4106647d05fc"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-14",
+      "world_id": "holdout-14-1",
+      "opening": {
+        "customer_message": "We rotated the destination last night. The availability report didn't land where we expected.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-907fdd98d765",
+            "status": "completed",
+            "value": "The output file was generated successfully at 06:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-37d480bcc8af",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c66efbe43248",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-907fdd98d765\", \"obs-37d480bcc8af\", \"obs-c66efbe43248\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-907fdd98d765",
+              "obs-37d480bcc8af",
+              "obs-c66efbe43248"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-14",
+      "world_id": "holdout-14-2",
+      "opening": {
+        "customer_message": "We rotated the destination last night. The availability report didn't land where we expected.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-c12fdabc0d0f",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (06:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-14d04b4e8abc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fd87697a6ed0",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fd87697a6ed0",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fd87697a6ed0",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-c12fdabc0d0f\", \"obs-14d04b4e8abc\", \"obs-fd87697a6ed0\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-c12fdabc0d0f",
+              "obs-14d04b4e8abc",
+              "obs-fd87697a6ed0"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-15",
+      "world_id": "holdout-15-1",
+      "opening": {
+        "customer_message": "The delivery we're chasing is two weeks old. Can you still check whether it made it out?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-6e5fa5c60b11",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-310d8a73b210",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-9254c49b6cb0",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-6e5fa5c60b11\", \"obs-310d8a73b210\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-6e5fa5c60b11",
+              "obs-310d8a73b210"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-15",
+      "world_id": "holdout-15-2",
+      "opening": {
+        "customer_message": "The delivery we're chasing is two weeks old. Can you still check whether it made it out?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-701f0ab81438",
+            "status": "completed",
+            "value": "The output file was generated successfully at 07:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-2662b9e3ad5f",
+            "status": "sent",
+            "value": "holdout-archive-32/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fa81cafb7bd2",
+            "status": "expected",
+            "value": "holdout-archive-32/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fa81cafb7bd2",
+            "status": "expected",
+            "value": "holdout-archive-32/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fa81cafb7bd2",
+            "status": "expected",
+            "value": "holdout-archive-32/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fa81cafb7bd2",
+            "status": "expected",
+            "value": "holdout-archive-32/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-16",
+      "world_id": "holdout-16-1",
+      "opening": {
+        "customer_message": "The bulk user list never reached the file watcher. It was supposed to arrive before standup.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-2efa4a739202",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (08:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-f4e4b499fa7f",
+            "status": "disabled",
+            "value": "Automatic dispatch is switched off for this account."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b6bbf87cda4c",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b6bbf87cda4c",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-f4e4b499fa7f",
+            "status": "disabled",
+            "value": "Automatic dispatch is switched off for this account."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-f4e4b499fa7f",
+            "status": "disabled",
+            "value": "Automatic dispatch is switched off for this account."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-16",
+      "world_id": "holdout-16-2",
+      "opening": {
+        "customer_message": "The bulk user list never reached the file watcher. It was supposed to arrive before standup.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-a780990ffcb7",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-3fad0f588822",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-43cecc4b6cd0",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-43cecc4b6cd0",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-a780990ffcb7\", \"obs-3fad0f58822\", \"obs-43cecc4b6cd0\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-a780990ffcb7",
+              "obs-3fad0f58822",
+              "obs-43cecc4b6cd0"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-a780990ffcb7\", \"obs-3fad0f58822\", \"obs-43cecc4b6cd0\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-a780990ffcb7",
+              "obs-3fad0f58822",
+              "obs-43cecc4b6cd0"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-17",
+      "world_id": "holdout-17-1",
+      "opening": {
+        "customer_message": "We've been watching the destination since six, but no updated claims extract has arrived.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-e10b6da1889c",
+            "status": "completed",
+            "value": "The output file was generated successfully at 01:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-8543381263a0",
+            "status": "sent",
+            "value": "holdout-archive-34/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-db38319cb707",
+            "status": "expected",
+            "value": "holdout-archive-34/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-db38319cb707",
+            "status": "expected",
+            "value": "holdout-archive-34/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-db38319cb707",
+            "status": "expected",
+            "value": "holdout-archive-34/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-db38319cb707",
+            "status": "expected",
+            "value": "holdout-archive-34/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-17",
+      "world_id": "holdout-17-2",
+      "opening": {
+        "customer_message": "We've been watching the destination since six, but no updated claims extract has arrived.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-e5c5ebfb29a2",
+            "status": "completed",
+            "value": "The output file was generated successfully at 01:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-0e6e59d15ce5",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-eff0efbf53dc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-eff0efbf53dc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-eff0efbf53dc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-e5c5ebfb29a2\", \"obs-0e6e59d15ce5\", \"obs-eff0efbf53dc\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-e5c5ebfb29a2",
+              "obs-0e6e59d15ce5",
+              "obs-eff0efbf53dc"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": false,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-18",
+      "world_id": "holdout-18-1",
+      "opening": {
+        "customer_message": "The automated import ran against an old file because a new reservations export wasn't present.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-6cb61aa4ae88",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-4db393e1d7af",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-fb8650ee8cfa",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-6cb61aa4ae88\", \"obs-4db393e1d7af\", \"obs-fb8650ee8cfa\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-6cb61aa4ae88",
+              "obs-4db393e1d7af",
+              "obs-fb8650ee8cfa"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-18",
+      "world_id": "holdout-18-2",
+      "opening": {
+        "customer_message": "The automated import ran against an old file because a new reservations export wasn't present.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-68cc621ed04d",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-079f54fb4432",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-3767bbe33f76",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-3767bbe33f76",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-3767bbe33f76",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-68cc621ed04d\", \"obs-079f54fb4432\", \"obs-3767bbe33f76\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-68cc621ed04d",
+              "obs-079f54fb4432",
+              "obs-3767bbe33f76"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": false,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-19",
+      "world_id": "holdout-19-1",
+      "opening": {
+        "customer_message": "Nothing turned up for the weekend meter export. We need to decide whether to retry it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bebe78ce59cf",
+            "status": "completed",
+            "value": "The output file was generated successfully at 03:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-a15ffbb376b6",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-8893270ea9fc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-bebe78ce59cf\", \"obs-a15ffbb376b6\", \"obs-8893270ea9fc\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-bebe78ce59cf",
+              "obs-a15ffbb376b6",
+              "obs-8893270ea9fc"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-19",
+      "world_id": "holdout-19-2",
+      "opening": {
+        "customer_message": "Nothing turned up for the weekend meter export. We need to decide whether to retry it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5d21b35056eb",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (03:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-2299d064fe92",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-e42c999f8f91",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-5d21b35056eb\", \"obs-2299d064fe92\", \"obs-e42c999f8f91\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-5d21b35056eb",
+              "obs-2299d064fe92",
+              "obs-e42c999f8f91"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-20",
+      "world_id": "holdout-20-1",
+      "opening": {
+        "customer_message": "The error feed usually lands on a schedule. There is a hole between Thursday and Saturday.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-44b3fcf95ceb",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-13c62af16edb",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-9a0cbce4439b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-9a0cbce4439b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-9a0cbce4439b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-44b3fcf95ceb\", \"obs-13c62af16edb\", \"obs-9a0cbce4439b\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-44b3fcf95ceb",
+              "obs-13c62af16edb",
+              "obs-9a0cbce4439b"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-20",
+      "world_id": "holdout-20-2",
+      "opening": {
+        "customer_message": "The error feed usually lands on a schedule. There is a hole between Thursday and Saturday.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-e20d2c983c13",
+            "status": "completed",
+            "value": "The output file was generated successfully at 04:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-3c62add500d0",
+            "status": "sent",
+            "value": "holdout-archive-37/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c80487e6bebc",
+            "status": "expected",
+            "value": "holdout-archive-37/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c80487e6bebc",
+            "status": "expected",
+            "value": "holdout-archive-37/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-3c62add500d0",
+            "status": "sent",
+            "value": "holdout-archive-37/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c80487e6bebc",
+            "status": "expected",
+            "value": "holdout-archive-37/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-21",
+      "world_id": "holdout-21-1",
+      "opening": {
+        "customer_message": "Can you find the batch of renewal events that the receiving system couldn't locate?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-30a4fcb70fc3",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (05:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-e9190b3cc5d3",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-852b4b72c3ef",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-30a4fcb70fc3\", \"obs-e9190b3cc5d3\", \"obs-852b4b72c3ef\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-30a4fcb70fc3",
+              "obs-e9190b3cc5d3",
+              "obs-852b4b72c3ef"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-21",
+      "world_id": "holdout-21-2",
+      "opening": {
+        "customer_message": "Can you find the batch of renewal events that the receiving system couldn't locate?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-74a8da4459c8",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-9c223a2e7718",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-e9c73b82cd9d",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-74a8da4459c8\", \"obs-9c223a2e7718\", \"obs-e9c73b82cd9d\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-74a8da4459c8",
+              "obs-9c223a2e7718",
+              "obs-e9c73b82cd9d"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-22",
+      "world_id": "holdout-22-1",
+      "opening": {
+        "customer_message": "The team is ready to process today's contract report, but the location we checked has no file.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-3e4a75610579",
+            "status": "completed",
+            "value": "The output file was generated successfully at 06:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-cbe670c227be",
+            "status": "sent",
+            "value": "holdout-archive-39/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ceb013cfb39f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-cbe670c227be",
+            "status": "sent",
+            "value": "holdout-archive-39/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ceb013cfb39f",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-ceb013cfb39f",
+            "status": "unavailable",
+            "value": null
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-22",
+      "world_id": "holdout-22-2",
+      "opening": {
+        "customer_message": "The team is ready to process today's contract report, but the location we checked has no file.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-21ec3f724f3f",
+            "status": "completed",
+            "value": "The output file was generated successfully at 06:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-762b24546dfb",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-0d1e475bc2e2",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-0d1e475bc2e2",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-0d1e475bc2e2",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-21ec3f724f3f\", \"obs-762b24546dfb\", \"obs-0d1e475bc2e2\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-21ec3f724f3f",
+              "obs-762b24546dfb",
+              "obs-0d1e475bc2e2"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-23",
+      "world_id": "holdout-23-1",
+      "opening": {
+        "customer_message": "Monday's archive didn't make it to the shared inbox. What evidence is available?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f7ad2f65cb3a",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-6347c32064b3",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-d76c2727bc45",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-f7ad2f65cb3a\", \"obs-6347c32064b3\", \"obs-d76c2727bc45\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-f7ad2f65cb3a",
+              "obs-6347c32064b3",
+              "obs-d76c2727bc45"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-23",
+      "world_id": "holdout-23-2",
+      "opening": {
+        "customer_message": "Monday's archive didn't make it to the shared inbox. What evidence is available?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-27daef327925",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-d86664ad837d",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-2ec8074b2fd4",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-2ec8074b2fd4",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-2ec8074b2fd4",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-27daef327925\", \"obs-d86664ad837d\", \"obs-2ec8074b2fd4\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-27daef327925",
+              "obs-d86664ad837d",
+              "obs-2ec8074b2fd4"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-24",
+      "world_id": "holdout-24-1",
+      "opening": {
+        "customer_message": "After moving the integration, we can't find the scheduled line-items output.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5b73fade13f3",
+            "status": "completed",
+            "value": "The output file was generated successfully at 08:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-5f4da5188af9",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-4684854a980b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-4684854a980b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-4684854a980b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-5b73fade13f3\", \"obs-5f4da5188af9\", \"obs-4684854a980b\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-5b73fade13f3",
+              "obs-5f4da5188af9",
+              "obs-4684854a980b"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-24",
+      "world_id": "holdout-24-2",
+      "opening": {
+        "customer_message": "After moving the integration, we can't find the scheduled line-items output.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-4a801b05ade3",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (08:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-04a57c366405",
+            "status": "disabled",
+            "value": "Automatic dispatch is switched off for this account."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-fd15ff610456",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-bad8b5bc6747",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-04a57c366405",
+            "status": "disabled",
+            "value": "Automatic dispatch is switched off for this account."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"schedule_disabled\", \"next_step\": \"review_and_enable_schedule\", \"evidence\": [\"obs-4a801b05ade3\", \"obs-04a57c366405\", \"obs-fd15ff610456\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "schedule_disabled",
+            "next_step": "review_and_enable_schedule",
+            "evidence": [
+              "obs-4a801b05ade3",
+              "obs-04a57c366405",
+              "obs-fd15ff610456"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-25",
+      "world_id": "holdout-25-1",
+      "opening": {
+        "customer_message": "The nightly roster is missing, and we're not sure whether to change a setting or wait.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-2f4505ca953a",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-87835ca7efa4",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-80814ae3b53a",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-2f4505ca953a\", \"obs-87835ca7efa4\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-2f4505ca953a",
+              "obs-87835ca7efa4"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-25",
+      "world_id": "holdout-25-2",
+      "opening": {
+        "customer_message": "The nightly roster is missing, and we're not sure whether to change a setting or wait.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f192a039931a",
+            "status": "completed",
+            "value": "The output file was generated successfully at 01:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-926a66d090af",
+            "status": "sent",
+            "value": "holdout-archive-42/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-13d4d389de44",
+            "status": "expected",
+            "value": "holdout-archive-42/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-13d4d389de44",
+            "status": "expected",
+            "value": "holdout-archive-42/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-13d4d389de44",
+            "status": "expected",
+            "value": "holdout-archive-42/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-13d4d389de44",
+            "status": "expected",
+            "value": "holdout-archive-42/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-26",
+      "world_id": "holdout-26-1",
+      "opening": {
+        "customer_message": "Our downstream index isn't current. The hourly export it consumes hasn't arrived.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-d6a0d4dec234",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (02:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-1560e5c7f3f4",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-a57f74561946",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-d6a0d4dec234\", \"obs-1560e5c7f3f4\", \"obs-a57f74561946\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-d6a0d4dec234",
+              "obs-1560e5c7f3f4",
+              "obs-a57f74561946"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-26",
+      "world_id": "holdout-26-2",
+      "opening": {
+        "customer_message": "Our downstream index isn't current. The hourly export it consumes hasn't arrived.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-3f251473514c",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-6368e7a204c9",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"delivery_blocked\", \"next_step\": \"review_delivery_access\", \"evidence\": [\"obs-3f251473514c\", \"obs-6368e7a204c9\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "delivery_blocked",
+            "next_step": "review_delivery_access",
+            "evidence": [
+              "obs-3f251473514c",
+              "obs-6368e7a204c9"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-27",
+      "world_id": "holdout-27-1",
+      "opening": {
+        "customer_message": "We can't match the payout register to today's balance because the scheduled file is missing.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bd921f471f0a",
+            "status": "completed",
+            "value": "The output file was generated successfully at 03:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-dd36d12aed9c",
+            "status": "sent",
+            "value": "holdout-archive-44/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-a7e07cf62970",
+            "status": "expected",
+            "value": "holdout-archive-44/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-a7e07cf62970",
+            "status": "expected",
+            "value": "holdout-archive-44/new"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-dd36d12aed9c",
+            "status": "sent",
+            "value": "holdout-archive-44/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-a7e07cf62970",
+            "status": "expected",
+            "value": "holdout-archive-44/new"
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-27",
+      "world_id": "holdout-27-2",
+      "opening": {
+        "customer_message": "We can't match the payout register to today's balance because the scheduled file is missing.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-8389c0abd8e9",
+            "status": "completed",
+            "value": "The output file was generated successfully at 03:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-5f159c36d93f",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-8a32a86714ca",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-8389c0abd8e9\", \"obs-5f159c36d93f\", \"obs-8a32a86714ca\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-8389c0abd8e9",
+              "obs-5f159c36d93f",
+              "obs-8a32a86714ca"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-28",
+      "world_id": "holdout-28-1",
+      "opening": {
+        "customer_message": "The analyst asked for yesterday's shipment history, but the scheduled batch is absent.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-de50e4235567",
+            "status": "failed",
+            "value": "A worker error interrupted generation before the file was written."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-fe00e9467362",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-d9fcc4f433a1",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-de50e4235567\", \"obs-fe00e9467362\", \"obs-d9fcc4f433a1\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-de50e4235567",
+              "obs-fe00e9467362",
+              "obs-d9fcc4f433a1"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-28",
+      "world_id": "holdout-28-2",
+      "opening": {
+        "customer_message": "The analyst asked for yesterday's shipment history, but the scheduled batch is absent.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ad002e8f81c4",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-36ac31c9e28f",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b3f1a130d143",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b3f1a130d143",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b3f1a130d143",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-ad002e8f81c4\", \"obs-36ac31c9e28f\", \"obs-b3f1a130d143\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-ad002e8f81c4",
+              "obs-36ac31c9e28f",
+              "obs-b3f1a130d143"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-29",
+      "world_id": "holdout-29-1",
+      "opening": {
+        "customer_message": "The operations handoff notes say a new file should be there. The receiving service found nothing.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-7a7f15a03424",
+            "status": "completed",
+            "value": "The output file was generated successfully at 05:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-5b8b4e5e5266",
+            "status": "access_denied",
+            "value": "The receiving service refused the write; permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b95d387dbc6b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b95d387dbc6b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b95d387dbc6b",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b95d387dbc6b",
+            "status": "unavailable",
+            "value": null
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-29",
+      "world_id": "holdout-29-2",
+      "opening": {
+        "customer_message": "The operations handoff notes say a new file should be there. The receiving service found nothing.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-92b838692e28",
+            "status": "no_run",
+            "value": "No invocation logged since the last scheduled window (05:00)."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-31e6be7e61fc",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-4ad4120f23b3",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-92b838692e28\", \"obs-31e6be7e61fc\", \"obs-4ad4120f23b3\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-92b838692e28",
+              "obs-31e6be7e61fc",
+              "obs-4ad4120f23b3"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-30",
+      "world_id": "holdout-30-1",
+      "opening": {
+        "customer_message": "No export appeared at the new drop point. Please check what happened before we rerun it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bd07be4a291f",
+            "status": "unavailable",
+            "value": "No retained records cover this delivery window."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-5cbdb9e98477",
+            "status": "unavailable",
+            "value": "No receipt is available."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c3daf12a8959",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-bd07be4a291f\", \"obs-5cbdb9e98477\", \"obs-c3daf12a8959\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-bd07be4a291f",
+              "obs-5cbdb9e98477",
+              "obs-c3daf12a8959"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "failed",
+        "reason": "The finding or cited evidence does not support this decision.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "holdout-30",
+      "world_id": "holdout-30-2",
+      "opening": {
+        "customer_message": "No export appeared at the new drop point. Please check what happened before we rerun it.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f44f795b634f",
+            "status": "completed",
+            "value": "The output file was generated successfully at 06:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-fef768d2b8b9",
+            "status": "sent",
+            "value": "holdout-archive-47/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-12a1a5040b39",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-12a1a5040b39",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-12a1a5040b39",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-12a1a5040b39",
+            "status": "unavailable",
+            "value": null
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    }
+  ],
+  "metrics": {
+    "attempted": 60,
+    "successes": 3,
+    "timeouts": 19,
+    "episodes_with_invalid_actions": 6,
+    "unsupported_claims": 39,
+    "unnecessary_questions": 0,
+    "matched_openings": 30,
+    "matched_opening_successes": 0
+  }
+}

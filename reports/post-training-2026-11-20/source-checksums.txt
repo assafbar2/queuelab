@@ -1,0 +1,4 @@
+0904f68409c30645d80a70b34161affc210dc262fc73cc197748a1c35e7a8767  training/__main__.py
+5f99ca5f1db9c259a458c6942847baee20389b7c66db1ca984b64bbd360ec972  training/cases.py
+e26b406fc8641d4bff22ed3152d08cdc228e566d07eea986a22571f37c9de6db  harness/simulator.py
+3b5812c9adeb9d92e1960474c497972b8261a7e0ea0265d4c8b3a5a364a2c5ac  reports/post-training-2026-11-20/environment.txt

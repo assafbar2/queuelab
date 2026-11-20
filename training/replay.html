@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QueueLab · Measured post-training replay</title>
+<style>
+  :root { color-scheme: light; background: #f4f0e6; color: #1e3228; font: 16px/1.5 system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  main { max-width: 76rem; margin: auto; padding: clamp(1rem, 5vw, 4rem); }
+  .tag { color: #376553; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; font-size: .82rem; }
+  h1 { font: clamp(2.8rem, 8vw, 5.4rem)/1 Georgia, serif; letter-spacing: -.055em; margin: .3rem 0 1rem; }
+  p { max-width: 68ch; }
+  .controls, .arms { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
+  label { display: grid; font-weight: 700; gap: .3rem; min-width: 0; }
+  select { width: 100%; padding: .65rem; border: 1px solid #9da99e; border-radius: .5rem; background: #fffdf7; color: #1e3228; font: inherit; }
+  blockquote { margin: 1.1rem 0; border-left: .25rem solid #668d74; padding: .6rem 1rem; font: 1.4rem/1.35 Georgia, serif; }
+  article { background: #fffdf7; border: 1px solid #d4d8cb; border-radius: 1rem; padding: 1rem; min-width: 0; }
+  article:last-child { border-color: #96b09b; }
+  h2 { margin: 0 0 .25rem; font: 1.8rem Georgia, serif; }
+  .metric { color: #244f3b; font-size: 1.6rem; font-weight: 750; font-variant-numeric: tabular-nums; }
+  details { border-top: 1px solid #dadcd1; padding: .55rem 0; }
+  summary { cursor: pointer; font-weight: 650; }
+  pre { font-size: .82rem; white-space: pre-wrap; overflow-wrap: anywhere; color: #33493d; }
+  #verdict { font-weight: 650; }
+</style>
+<main>
+  <p class="tag">QueueLab / Measured local experiment</p>
+  <h1>Same model. Adapter off and on.</h1>
+  <p>Saved model responses from paired, fictional engineering support investigations. The review set was not used to train the adapter. These are synthetic results, not customer outcomes.</p>
+  <div class="controls">
+    <label>Model <select id="model"></select></label>
+    <label>Investigation <select id="scenario"></select></label>
+  </div>
+  <p id="verdict" role="status"></p>
+  <blockquote id="ticket"></blockquote>
+  <div class="arms" id="arms"></div>
+</main>
+<script type="application/json" id="traces">__QUEUE_LAB_TRACES__</script>
+<script>
+  const comparisons = JSON.parse(document.getElementById('traces').textContent);
+  const model = document.getElementById('model');
+  const scenario = document.getElementById('scenario');
+  const element = (tag, text, style) => {
+    const result = document.createElement(tag);
+    if (text !== undefined) result.textContent = text;
+    if (style) result.className = style;
+    return result;
+  };
+  const resultLabel = (before, after) => before === after ? 'Same outcome' : after === 'success' ? 'Gain' : before === 'success' ? 'Regression' : 'Different failure';
+  const count = (metrics) => `${metrics.successes} / ${metrics.attempted}`;
+  const signedPoints = (delta) => `${delta > 0 ? '+' : ''}${(100 * delta).toFixed(1)} pp`;
+
+  function chooseModel() {
+    const selected = comparisons[model.value];
+    scenario.replaceChildren(...selected.base.map((before, index) => {
+      const after = selected.adapted[index];
+      return new Option(`${index + 1}. ${resultLabel(before.verdict.outcome, after.verdict.outcome)} · ${before.opening.customer_message}`, index);
+    }));
+    const firstGain = selected.adapted.findIndex((after, index) => after.verdict.outcome === 'success' && selected.base[index].verdict.outcome !== 'success');
+    if (firstGain >= 0) scenario.selectedIndex = firstGain;
+    show();
+  }
+
+  function show() {
+    const selected = comparisons[model.value];
+    const index = Number(scenario.value);
+    const numbers = selected.scorecard;
+    const [lower, upper] = numbers.bootstrap_95_interval;
+    document.getElementById('ticket').textContent = selected.base[index].opening.customer_message;
+    document.getElementById('verdict').textContent = `${signedPoints(numbers.primary_delta)} evidence-backed success (${signedPoints(lower)} to ${signedPoints(upper)}; 95% paired interval). Unsupported recommendation episodes: ${numbers.base.unsupported_claims} → ${numbers.adapted.unsupported_claims}.`;
+    document.getElementById('arms').replaceChildren(...['base', 'adapted'].map((arm) => {
+      const entry = selected[arm][index];
+      const metrics = numbers[arm];
+      const article = element('article');
+      article.append(element('h2', arm === 'base' ? 'Adapter off' : 'Adapter on'), element('div', count(metrics), 'metric'),
+        element('p', `This case: ${entry.verdict.outcome}. ${entry.verdict.reason}`));
+      entry.turns.forEach((turn, turnIndex) => {
+        const details = element('details');
+        const action = turn.action?.action;
+        const name = [action, turn.action?.source ?? turn.action?.finding ?? turn.action?.fact].filter(Boolean).join(' · ');
+        details.append(element('summary', `${turnIndex + 1}. ${name || 'Unrecognized reply'}`),
+          element('p', turn.result.value ?? turn.result.error ?? (turn.result.accepted_terminal ? 'Final action accepted for grading.' : 'Record unavailable.')),
+          element('pre', `${turn.raw}\n\n${JSON.stringify(turn.result, null, 2)}`));
+        article.append(details);
+      });
+      return article;
+    }));
+  }
+
+  for (const [key, value] of Object.entries(comparisons)) model.add(new Option(value.label, key));
+  model.addEventListener('change', chooseModel);
+  scenario.addEventListener('change', show);
+  chooseModel();
+</script>
+</html>

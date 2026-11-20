@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="579" viewBox="0 0 1120 579" role="img" aria-labelledby="title desc">
+<title id="title">QueueLab measured post-training results</title>
+<desc id="desc">SmolLM2 1.7B: 0 before and 53 after, out of 60. Falcon 90M: 0 before and 3 after, out of 60. Synthetic engineering support evaluation.</desc>
+<style>
+text { fill:#1e392d; font-family:Arial,Helvetica,sans-serif; }
+.eyebrow { font-size:14px; font-weight:700; letter-spacing:1.5px; fill:#446f5d; }
+.headline { font-family:Georgia,'Times New Roman',serif; font-size:49px; letter-spacing:-1.7px; }
+.heading { font-family:Georgia,'Times New Roman',serif; font-size:29px; }
+.detail { font-size:17px; fill:#42594e; }
+.status { font-size:15px; font-weight:700; fill:#355d4b; }
+.score { font-size:23px; font-weight:700; }
+</style>
+<rect x="1" y="1" width="1118" height="577" rx="25" fill="#f6f2e8" stroke="#d4d9cc" stroke-width="2"/>
+<text x="51" y="47" class="eyebrow">QUEUELAB / ACTUAL LOCAL RUN</text>
+<text x="49" y="106" class="headline">The same model, with and without LoRA.</text>
+<text x="51" y="145" class="detail">Evidence-backed decisions on 60 held-out engineering support scenarios per arm.</text>
+<rect x="50" y="185" width="1020" height="145" rx="18" fill="#fffdf7" stroke="#d2dace"/>
+<text x="75" y="225" class="heading">SmolLM2 1.7B</text>
+<text x="75" y="257" class="detail">+88.3 pp · 95% interval +80.0 to +95.0 pp</text>
+<text x="75" y="288" class="detail">Unsupported recommendations: 36 → 7 episodes</text>
+<text x="75" y="312" class="status">Met measured gain rule</text>
+<text x="523" y="238" class="detail">Before</text>
+<rect x="600" y="222" width="307" height="22" rx="11" fill="#e9eae1"/>
+<rect x="600" y="222" width="0.00" height="22" rx="0.00" fill="#788980"/>
+<text x="1042" y="240" text-anchor="end" class="score">0 / 60</text>
+<text x="523" y="294" class="detail">After</text>
+<rect x="600" y="278" width="307" height="22" rx="11" fill="#e9eae1"/>
+<rect x="600" y="278" width="271.18" height="22" rx="11.00" fill="#2f7257"/>
+<text x="1042" y="296" text-anchor="end" class="score">53 / 60</text><rect x="50" y="349" width="1020" height="145" rx="18" fill="#fffdf7" stroke="#d2dace"/>
+<text x="75" y="389" class="heading">Falcon 90M</text>
+<text x="75" y="421" class="detail">+5.0 pp · 95% interval +0.0 to +11.7 pp</text>
+<text x="75" y="452" class="detail">Unsupported recommendations: 0 → 39 episodes</text>
+<text x="75" y="476" class="status">Did not meet measured gain rule</text>
+<text x="523" y="402" class="detail">Before</text>
+<rect x="600" y="386" width="307" height="22" rx="11" fill="#e9eae1"/>
+<rect x="600" y="386" width="0.00" height="22" rx="0.00" fill="#788980"/>
+<text x="1042" y="404" text-anchor="end" class="score">0 / 60</text>
+<text x="523" y="458" class="detail">After</text>
+<rect x="600" y="442" width="307" height="22" rx="11" fill="#e9eae1"/>
+<rect x="600" y="442" width="15.35" height="22" rx="7.67" fill="#2f7257"/>
+<text x="1042" y="460" text-anchor="end" class="score">3 / 60</text>
+<path d="M51 529h1018" stroke="#d4d9cc"/>
+<text x="51" y="557" class="detail">Synthetic cases from known failure families · Independent practitioner review pending</text>
+</svg>

@@ -1,0 +1,91 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+  "revision": "31b70e2e869a7173562077fd711b654946d38674",
+  "fine_tune_type": "lora",
+  "num_layers": 24,
+  "lora_parameters": {
+    "rank": 8,
+    "scale": 2.0,
+    "dropout": 0.05,
+    "keys": [
+      "self_attn.q_proj",
+      "self_attn.v_proj"
+    ]
+  },
+  "seed": 42,
+  "steps": 180,
+  "batch_size": 4,
+  "learning_rate": 0.0002,
+  "base_parameters": 1711376384,
+  "trainable_parameters": 1572864,
+  "base_dtypes": [
+    "mlx.core.bfloat16",
+    "mlx.core.float32"
+  ],
+  "precision": "pinned checkpoint dtypes, no quantization",
+  "runtime": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.23.0"
+  },
+  "mask": "next assistant action and end-of-turn token only; prompt and padding excluded",
+  "largest_sequence": 498,
+  "mask_probe": {
+    "prompt": 418,
+    "target": 80
+  },
+  "data": {
+    "provenance": "Synthetic cases and deterministic reference decisions; no independent practitioner review.",
+    "partitions": {
+      "train": {
+        "groups": 40,
+        "worlds": 200,
+        "fixture_sha256": "b4047b2fcde3b08804d1bdf2c35d98c10c6bd0e9f0de5a021995860f900c394e",
+        "rows": 610,
+        "row_sha256": "5d5b176a50900f5c7ef8490a775dd1d94e83a9efa2ee5a5661d17c1471b6e484"
+      },
+      "valid": {
+        "groups": 20,
+        "worlds": 100,
+        "fixture_sha256": "107025a4e8c33b355163605da7b4fca07401cc05af6a94b74089ffbbff7aff01",
+        "rows": 305,
+        "row_sha256": "8ae7438d7852bef06408d316d066ffd6af1786dea4a420229c30e71691c37f77"
+      },
+      "holdout": {
+        "groups": 30,
+        "worlds": 60,
+        "fixture_sha256": "8e0da66ffe7f9f214e2a68a76e0d1f29519c210306495088d9daffa948febd0d"
+      }
+    }
+  }
+}
+  [1miter   train_loss     tok/s     tokens[0m
+     1    [1mval[0m [1m0.460[0m    5.01s
+    10    [1m0.293 ▼[0m    [1m   84[0m      1.3k
+    20    [1m0.157 ▼[0m    [1m  103[0m      2.6k
+    30    [1m0.078 ▼[0m    [1m  100[0m      3.8k
+    40    [1m0.061 ▼[0m    [1m   78[0m      4.6k
+    50    [1m0.026 ▼[0m    [1m  118[0m      6.2k
+    60    [1m0.057 ▲[0m    [1m   91[0m      7.4k
+    70    [1m0.043 ▼[0m    [1m   81[0m      8.5k
+    80    [1m0.041 ▼[0m    [1m   77[0m      9.7k
+    90    [1mval[0m [1m0.053[0m    4.49s
+    90    [1m0.022 ▼[0m    [1m   57[0m     10.4k
+   100    [1m0.046 ▲[0m    [1m   97[0m     11.9k
+   110    [1m0.015 ▼[0m    [1m   75[0m     13.1k
+   120    [1m0.053 ▲[0m    [1m   59[0m     14.1k
+   130    [1m0.031 ▼[0m    [1m   60[0m     15.2k
+   140    [1m0.016 ▼[0m    [1m   57[0m     16.6k
+   150    [1m0.011 ▼[0m    [1m   65[0m     17.9k
+   160    [1m0.003 ▼[0m    [1m   49[0m     18.7k
+   170    [1m0.003 ▼[0m    [1m   59[0m     19.8k
+   180    [1mval[0m [1m0.001[0m    5.15s
+   180    [1m0.001 ▼[0m    [1m   65[0m     21.1k
+[1mtrain[0m ██████████████████████████████ [1m100%[0m · [1m  180[0m/180
+{
+  "seconds": 299.76,
+  "optimizer_steps": 180,
+  "updated_lora_b_tensors": 48,
+  "adapter_sha256": "4bd515a387d849ce0195dff3c490ad6b80c9b0a1d154816371c5acfed7fd442d"
+}

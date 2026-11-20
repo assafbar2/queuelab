@@ -1,0 +1,6 @@
+{
+  "seconds": 299.76,
+  "optimizer_steps": 180,
+  "updated_lora_b_tensors": 48,
+  "adapter_sha256": "4bd515a387d849ce0195dff3c490ad6b80c9b0a1d154816371c5acfed7fd442d"
+}

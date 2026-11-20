@@ -1,0 +1,6 @@
+.DS_Store
+.venv/
+.venv-mlx/
+__pycache__/
+reports/*.json
+reports/post-training-*/**/adapters.safetensors
