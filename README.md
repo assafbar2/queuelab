@@ -4,6 +4,8 @@
 
 An **open-source engineering support experiment** and a companion to [*The Support Machine*, Chapter 22: The Shadow Run](https://assafbar2.github.io/the-support-machine/book.html#22-the-shadow-run). Can a small model learn to check the evidence before telling a customer what went wrong?
 
+**[▶ Watch the before-and-after replay](https://assafbar2.github.io/queuelab/post-training/)**. See which records the models checked and what they recommended before and after fine-tuning. These are saved runs from the actual experiment. No install or API key needed.
+
 A customer writes: “Our nightly export stopped arriving after the upgrade.” Maybe the export never ran. Maybe it ran and went to the old folder. The message is the same. The records tell you whether to check the schedule, correct the destination, or escalate. QueueLab scores what the model can support from the records it actually saw, not how convincing the reply sounds.
 
 ## What changed after training
@@ -12,9 +14,9 @@ We trained and reloaded real LoRA adapters for both models. On 60 held-out ficti
 
 ![Measured before-and-after scores: SmolLM2 0/60 to 53/60; Falcon 0/60 to 3/60.](reports/post-training-2026-11-20/scorecard.png)
 
-[Open the recorded investigations](https://assafbar2.github.io/queuelab/post-training/) · [See the measured scorecard and raw traces](reports/post-training-2026-11-20/README.md#measured-results) · [Model and data notes](docs/MODEL-AND-DATA.md)
+[See the measured scorecard and raw traces](reports/post-training-2026-11-20/README.md#measured-results) · [Model and data notes](docs/MODEL-AND-DATA.md)
 
-Start with the recorded missing-export investigation in the [run record](reports/post-training-2026-11-20/README.md#inspect-a-real-before-and-after-case). It shows what SmolLM2 looked up after training that it missed before. The replay needs no model or API key. You can also download the [standalone HTML replay](docs/post-training/index.html) and open it in your browser.
+For a written walkthrough, see the [missing-export investigation in the run record](reports/post-training-2026-11-20/README.md#inspect-a-real-before-and-after-case). It shows what SmolLM2 looked up after training that it missed before. You can also download the [standalone HTML replay](docs/post-training/index.html) and open it in your browser.
 
 If you want to see the setup, [watch the post-training animation](diagrams/queuelab-post-training.gif) or [open the detailed diagram](diagrams/queuelab-experiment.png). The animation’s numbers are illustrative; the scorecard above is the measured run.
 
