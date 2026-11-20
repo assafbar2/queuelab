@@ -1,0 +1,1954 @@
+{
+  "schema_version": 1,
+  "split": "development-pilot",
+  "provenance": "Draft synthetic cases authored for QueueLab; practitioner review pending.",
+  "fixture_sha256": "7f88f9b6e0911208d3dfa47bdc8c8b46f3448118116644f4f494b3546196b9d7",
+  "opening_ids": [
+    "after-upgrade",
+    "empty-folder",
+    "team-migration",
+    "weekly-rollup",
+    "destination-cutover",
+    "archive-gap",
+    "month-end",
+    "automated-feed",
+    "back-from-pause",
+    "partnership"
+  ],
+  "backend": {
+    "model": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "revision": "31b70e2e869a7173562077fd711b654946d38674",
+    "device": "mps",
+    "precision": "float32",
+    "torch": "2.15.0",
+    "transformers": "4.57.6",
+    "max_new_tokens": 128,
+    "decoding": "greedy",
+    "seed": 42,
+    "kind": "model",
+    "label": "Unchanged model baseline",
+    "prompt_sha256": "09c3c55fdb88f91ca6980fbc7e4da023d3d50a533bf8255196bf786474b0e90c"
+  },
+  "environment": {
+    "python": "3.14.7",
+    "system": "Darwin",
+    "arch": "arm64"
+  },
+  "episodes": [
+    {
+      "opening_id": "after-upgrade",
+      "world_id": "upgrade-disabled",
+      "opening": {
+        "customer_message": "Our nightly export stopped arriving after the upgrade.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-6e8304130f95",
+            "status": "no_run",
+            "value": "No run since the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-6e8304130f95",
+            "status": "no_run",
+            "value": "No run since the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-6e8304130f95\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-6e8304130f95"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-6e8304130f95",
+            "status": "no_run",
+            "value": "No run since the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-6e8304130f95",
+            "status": "no_run",
+            "value": "No run since the upgrade."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "after-upgrade",
+      "world_id": "upgrade-destination",
+      "opening": {
+        "customer_message": "Our nightly export stopped arriving after the upgrade.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0f62a51e2f40",
+            "status": "completed",
+            "value": "The export completed after the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0f62a51e2f40",
+            "status": "completed",
+            "value": "The export completed after the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": \"obs-0f62a51e2f40\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": "obs-0f62a51e2f40"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0f62a51e2f40",
+            "status": "completed",
+            "value": "The export completed after the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0f62a51e2f40",
+            "status": "completed",
+            "value": "The export completed after the upgrade."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "after-upgrade",
+      "world_id": "upgrade-unknown",
+      "opening": {
+        "customer_message": "Our nightly export stopped arriving after the upgrade.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f7b27ea10f02",
+            "status": "unavailable",
+            "value": "Run records expired."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f7b27ea10f02",
+            "status": "unavailable",
+            "value": "Run records expired."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f7b27ea10f02",
+            "status": "unavailable",
+            "value": "Run records expired."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f7b27ea10f02",
+            "status": "unavailable",
+            "value": "Run records expired."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "empty-folder",
+      "world_id": "empty-blocked",
+      "opening": {
+        "customer_message": "The folder is empty again this morning. Can you see what happened to the report?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0c0c7852661f",
+            "status": "completed",
+            "value": "The report was generated at 05:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"expected_destination\", \"next_step\": \"inspect_run_error\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "expected_destination",
+            "next_step": "inspect_run_error"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0c0c7852661f",
+            "status": "completed",
+            "value": "The report was generated at 05:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0c0c7852661f",
+            "status": "completed",
+            "value": "The report was generated at 05:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0c0c7852661f",
+            "status": "completed",
+            "value": "The report was generated at 05:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0c0c7852661f",
+            "status": "completed",
+            "value": "The report was generated at 05:00."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "empty-folder",
+      "world_id": "empty-failed",
+      "opening": {
+        "customer_message": "The folder is empty again this morning. Can you see what happened to the report?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-efa6ad2895d8",
+            "status": "failed",
+            "value": "The run stopped during CSV validation; error detail is retained."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-efa6ad2895d8",
+            "status": "failed",
+            "value": "The run stopped during CSV validation; error detail is retained."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-efa6ad2895d8",
+            "status": "failed",
+            "value": "The run stopped during CSV validation; error detail is retained."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-efa6ad2895d8",
+            "status": "failed",
+            "value": "The run stopped during CSV validation; error detail is retained."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "team-migration",
+      "world_id": "team-ask",
+      "opening": {
+        "customer_message": "We moved reporting to a new team. Finance didn't get today's file.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-17f611d0277f",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-17f611d0277f",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"review_and_enable_schedule\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "review_and_enable_schedule"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-17f611d0277f",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-17f611d0277f",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "team-migration",
+      "world_id": "team-blocked",
+      "opening": {
+        "customer_message": "We moved reporting to a new team. Finance didn't get today's file.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-80684190e271",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-80684190e271",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"review_and_enable_schedule\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "review_and_enable_schedule"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-80684190e271",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-80684190e271",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "weekly-rollup",
+      "world_id": "rollup-disabled",
+      "opening": {
+        "customer_message": "Monday's rollup never showed up. Last week's did.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-9371333e61e1",
+            "status": "no_run",
+            "value": "No execution was created for Monday."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-9371333e61e1",
+            "status": "no_run",
+            "value": "No execution was created for Monday."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-9371333e61e1\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-9371333e61e1"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-9371333e61e1",
+            "status": "no_run",
+            "value": "No execution was created for Monday."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-9371333e61e1",
+            "status": "no_run",
+            "value": "No execution was created for Monday."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "weekly-rollup",
+      "world_id": "rollup-failed",
+      "opening": {
+        "customer_message": "Monday's rollup never showed up. Last week's did.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-43a1cba54825",
+            "status": "failed",
+            "value": "Monday's execution failed on an upstream query timeout."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-43a1cba54825",
+            "status": "failed",
+            "value": "Monday's execution failed on an upstream query timeout."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": \"obs-43a1cba54825\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": "obs-43a1cba54825"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-43a1cba54825",
+            "status": "failed",
+            "value": "Monday's execution failed on an upstream query timeout."
+          }
+        },
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-43a1cba54825",
+            "status": "failed",
+            "value": "Monday's execution failed on an upstream query timeout."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "destination-cutover",
+      "world_id": "cutover-destination",
+      "opening": {
+        "customer_message": "We switched folders yesterday and now we can't find today's export.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5e8ab4927755",
+            "status": "completed",
+            "value": "The export ran on time."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5e8ab4927755",
+            "status": "completed",
+            "value": "The export ran on time."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": \"obs-5e8ab4927755\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": "obs-5e8ab4927755"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5e8ab4927755",
+            "status": "completed",
+            "value": "The export ran on time."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5e8ab4927755",
+            "status": "completed",
+            "value": "The export ran on time."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "destination-cutover",
+      "world_id": "cutover-coincidence",
+      "opening": {
+        "customer_message": "We switched folders yesterday and now we can't find today's export.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-2ccc9c66250d",
+            "status": "failed",
+            "value": "The data query failed before a file was produced."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-2ccc9c66250d",
+            "status": "failed",
+            "value": "The data query failed before a file was produced."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-2ccc9c66250d\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-2ccc9c66250d"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-2ccc9c66250d",
+            "status": "failed",
+            "value": "The data query failed before a file was produced."
+          }
+        },
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-2ccc9c66250d",
+            "status": "failed",
+            "value": "The data query failed before a file was produced."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "archive-gap",
+      "world_id": "archive-expired",
+      "opening": {
+        "customer_message": "We're missing the export for the first business day of last month.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f1e52185adaf",
+            "status": "unavailable",
+            "value": "Run history for that date is beyond retention."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f1e52185adaf",
+            "status": "unavailable",
+            "value": "Run history for that date is beyond retention."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-f1e52185adaf\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-f1e52185adaf"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f1e52185adaf",
+            "status": "unavailable",
+            "value": "Run history for that date is beyond retention."
+          }
+        },
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f1e52185adaf",
+            "status": "unavailable",
+            "value": "Run history for that date is beyond retention."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "archive-gap",
+      "world_id": "archive-blocked",
+      "opening": {
+        "customer_message": "We're missing the export for the first business day of last month.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0a533bcd96e5",
+            "status": "completed",
+            "value": "An archived job record confirms completion."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-0a533bcd96e5\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-0a533bcd96e5"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0a533bcd96e5",
+            "status": "completed",
+            "value": "An archived job record confirms completion."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-0a533bcd96e5\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-0a533bcd96e5"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0a533bcd96e5",
+            "status": "completed",
+            "value": "An archived job record confirms completion."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 3,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "month-end",
+      "world_id": "month-disabled",
+      "opening": {
+        "customer_message": "Can you check why the month-end export didn't reach our storage?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b2aa2d0aa734",
+            "status": "no_run",
+            "value": "No month-end job was created."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b2aa2d0aa734",
+            "status": "no_run",
+            "value": "No month-end job was created."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-b2aa2d0aa734\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-b2aa2d0aa734"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b2aa2d0aa734",
+            "status": "no_run",
+            "value": "No month-end job was created."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b2aa2d0aa734",
+            "status": "no_run",
+            "value": "No month-end job was created."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "month-end",
+      "world_id": "month-destination",
+      "opening": {
+        "customer_message": "Can you check why the month-end export didn't reach our storage?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bd849a1d4dba",
+            "status": "completed",
+            "value": "The month-end export completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bd849a1d4dba",
+            "status": "completed",
+            "value": "The month-end export completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-bd849a1d4dba\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-bd849a1d4dba"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bd849a1d4dba",
+            "status": "completed",
+            "value": "The month-end export completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bd849a1d4dba",
+            "status": "completed",
+            "value": "The month-end export completed."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "automated-feed",
+      "world_id": "feed-blocked",
+      "opening": {
+        "customer_message": "Our importer says the daily file is missing. Did the export happen?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-840fd1977386",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-840fd1977386",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-840fd1977386\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-840fd1977386"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-840fd1977386",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\":\"inspect\",\"source\":\"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-840fd1977386",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "automated-feed",
+      "world_id": "feed-destination",
+      "opening": {
+        "customer_message": "Our importer says the daily file is missing. Did the export happen?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-77d5fa500ddf",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"review_and_enable_schedule\", \"evidence\": []}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "review_and_enable_schedule",
+            "evidence": []
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-77d5fa500ddf",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-77d5fa500ddf",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-77d5fa500ddf",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-77d5fa500ddf",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": true,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "back-from-pause",
+      "world_id": "pause-disabled",
+      "opening": {
+        "customer_message": "We expected the scheduled report to start again today, but nothing landed.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7b20c4dafcd",
+            "status": "no_run",
+            "value": "There is no run for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7b20c4dafcd",
+            "status": "no_run",
+            "value": "There is no run for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"review_and_enable_schedule\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "review_and_enable_schedule"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7b20c4dafcd",
+            "status": "no_run",
+            "value": "There is no run for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7b20c4dafcd",
+            "status": "no_run",
+            "value": "There is no run for today."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "back-from-pause",
+      "world_id": "pause-unknown",
+      "opening": {
+        "customer_message": "We expected the scheduled report to start again today, but nothing landed.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7e2323a1ec8",
+            "status": "unavailable",
+            "value": "Run records are not accessible for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7e2323a1ec8",
+            "status": "unavailable",
+            "value": "Run records are not accessible for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-b7e2323a1ec8\"]}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-b7e2323a1ec8"
+            ]
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7e2323a1ec8",
+            "status": "unavailable",
+            "value": "Run records are not accessible for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7e2323a1ec8",
+            "status": "unavailable",
+            "value": "Run records are not accessible for today."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "partnership",
+      "world_id": "partner-failed",
+      "opening": {
+        "customer_message": "Our partner didn't receive the overnight data drop. What should we check?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ed90d1d68ec6",
+            "status": "failed",
+            "value": "The job failed during compression before delivery."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ed90d1d68ec6",
+            "status": "failed",
+            "value": "The job failed during compression before delivery."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ed90d1d68ec6",
+            "status": "failed",
+            "value": "The job failed during compression before delivery."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ed90d1d68ec6",
+            "status": "failed",
+            "value": "The job failed during compression before delivery."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ed90d1d68ec6",
+            "status": "failed",
+            "value": "The job failed during compression before delivery."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": true,
+        "invalid_actions": 1,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "partnership",
+      "world_id": "partner-unknown",
+      "opening": {
+        "customer_message": "Our partner didn't receive the overnight data drop. What should we check?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-21df21263cb9",
+            "status": "unavailable",
+            "value": "Run information is missing after a retention change."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-21df21263cb9",
+            "status": "unavailable",
+            "value": "Run information is missing after a retention change."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-21df21263cb9",
+            "status": "unavailable",
+            "value": "Run information is missing after a retention change."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"fact\": \"undetermined\"}",
+          "action": {
+            "action": "recommend",
+            "fact": "undetermined"
+          },
+          "result": {
+            "error": "Action violates the JSON contract or cites unseen evidence."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-21df21263cb9",
+            "status": "unavailable",
+            "value": "Run information is missing after a retention change."
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "timeout",
+        "reason": "No valid terminal action within six actions.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": true,
+        "invalid_actions": 2,
+        "unnecessary_questions": 0
+      }
+    }
+  ],
+  "metrics": {
+    "attempted": 21,
+    "successes": 0,
+    "timeouts": 21,
+    "episodes_with_invalid_actions": 21,
+    "unsupported_claims": 21,
+    "unnecessary_questions": 0,
+    "matched_openings": 10,
+    "matched_opening_successes": 0
+  }
+}

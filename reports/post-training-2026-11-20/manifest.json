@@ -1,0 +1,24 @@
+{
+  "provenance": "Synthetic cases and deterministic reference decisions; no independent practitioner review.",
+  "partitions": {
+    "train": {
+      "groups": 40,
+      "worlds": 200,
+      "fixture_sha256": "b4047b2fcde3b08804d1bdf2c35d98c10c6bd0e9f0de5a021995860f900c394e",
+      "rows": 610,
+      "row_sha256": "5d5b176a50900f5c7ef8490a775dd1d94e83a9efa2ee5a5661d17c1471b6e484"
+    },
+    "valid": {
+      "groups": 20,
+      "worlds": 100,
+      "fixture_sha256": "107025a4e8c33b355163605da7b4fca07401cc05af6a94b74089ffbbff7aff01",
+      "rows": 305,
+      "row_sha256": "8ae7438d7852bef06408d316d066ffd6af1786dea4a420229c30e71691c37f77"
+    },
+    "holdout": {
+      "groups": 30,
+      "worlds": 60,
+      "fixture_sha256": "8e0da66ffe7f9f214e2a68a76e0d1f29519c210306495088d9daffa948febd0d"
+    }
+  }
+}

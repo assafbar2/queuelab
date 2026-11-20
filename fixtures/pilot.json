@@ -1,0 +1,78 @@
+{
+  "split": "development-pilot",
+  "provenance": "Draft synthetic cases authored for QueueLab; practitioner review pending.",
+  "openings": [
+    {
+      "id": "after-upgrade",
+      "ticket": "Our nightly export stopped arriving after the upgrade.",
+      "worlds": [
+        {"id":"upgrade-disabled","finding":"schedule_disabled","paths":[["runs","schedule"],["runs","delivery"]],"records":{"runs":["no_run","No run since the upgrade."],"schedule":["disabled","The schedule is off."],"delivery":["skipped_disabled","Scheduler audit: delivery was skipped because scheduling is disabled."]}},
+        {"id":"upgrade-destination","finding":"destination_mismatch","paths":[["runs","delivery","destination"]],"records":{"runs":["completed","The export completed after the upgrade."],"delivery":["sent","archive-east/old"],"destination":["expected","archive-east/current"]}},
+        {"id":"upgrade-unknown","finding":"undetermined","paths":[["runs","delivery"]],"records":{"runs":["unavailable","Run records expired."],"delivery":["unavailable","No delivery receipt remains."]}}
+      ]
+    },
+    {
+      "id":"empty-folder","ticket":"The folder is empty again this morning. Can you see what happened to the report?",
+      "worlds":[
+        {"id":"empty-blocked","finding":"delivery_blocked","paths":[["runs","delivery"]],"records":{"runs":["completed","The report was generated at 05:00."],"delivery":["access_denied","The storage provider rejected the upload: write permission denied."]}},
+        {"id":"empty-failed","finding":"run_failed","paths":[["runs"]],"records":{"runs":["failed","The run stopped during CSV validation; error detail is retained."],"schedule":["enabled","Morning schedule is enabled."]}}
+      ]
+    },
+    {
+      "id":"team-migration","ticket":"We moved reporting to a new team. Finance didn't get today's file.",
+      "worlds":[
+        {"id":"team-ask","finding":"destination_mismatch","ask_useful":true,"paths":[["runs","delivery","expected_destination"]],"records":{"runs":["completed","Today's run completed."],"delivery":["sent","team-finance/shared"],"destination":["unavailable","No current destination preference is recorded."],"expected_destination":["expected","team-analytics/finance"]}},
+        {"id":"team-blocked","finding":"delivery_blocked","paths":[["runs","delivery"]],"records":{"runs":["completed","Today's run completed."],"delivery":["access_denied","The new team storage rejected the writer identity."],"destination":["expected","team-analytics/finance"]}}
+      ]
+    },
+    {
+      "id":"weekly-rollup","ticket":"Monday's rollup never showed up. Last week's did.",
+      "worlds":[
+        {"id":"rollup-disabled","finding":"schedule_disabled","paths":[["runs","schedule"]],"records":{"runs":["no_run","No execution was created for Monday."],"schedule":["disabled","The weekly schedule was paused after last week's run."]}},
+        {"id":"rollup-failed","finding":"run_failed","paths":[["runs"]],"records":{"runs":["failed","Monday's execution failed on an upstream query timeout."],"schedule":["enabled","The Monday schedule fired."]}}
+      ]
+    },
+    {
+      "id":"destination-cutover","ticket":"We switched folders yesterday and now we can't find today's export.",
+      "worlds":[
+        {"id":"cutover-destination","finding":"destination_mismatch","paths":[["runs","delivery","destination"]],"records":{"runs":["completed","The export ran on time."],"delivery":["sent","reporting/legacy"],"destination":["expected","reporting/cutover"]}},
+        {"id":"cutover-coincidence","finding":"run_failed","paths":[["runs"]],"records":{"runs":["failed","The data query failed before a file was produced."],"destination":["expected","reporting/cutover"],"delivery":["unavailable","No upload attempted for today's run."]}}
+      ]
+    },
+    {
+      "id":"archive-gap","ticket":"We're missing the export for the first business day of last month.",
+      "worlds":[
+        {"id":"archive-expired","finding":"undetermined","paths":[["runs","delivery"]],"records":{"runs":["unavailable","Run history for that date is beyond retention."],"delivery":["unavailable","Delivery history for that date is beyond retention."]}},
+        {"id":"archive-blocked","finding":"delivery_blocked","paths":[["runs","delivery"]],"records":{"runs":["completed","An archived job record confirms completion."],"delivery":["access_denied","Archived receipt: destination refused the file because the writer lacked access."]}}
+      ]
+    },
+    {
+      "id":"month-end","ticket":"Can you check why the month-end export didn't reach our storage?",
+      "worlds":[
+        {"id":"month-disabled","finding":"schedule_disabled","paths":[["runs","schedule"]],"records":{"runs":["no_run","No month-end job was created."],"schedule":["disabled","Recurring month-end export was switched off."]}},
+        {"id":"month-destination","finding":"destination_mismatch","paths":[["runs","delivery","destination"]],"records":{"runs":["completed","The month-end export completed."],"delivery":["sent","accounts/staging"],"destination":["expected","accounts/close"]}}
+      ]
+    },
+    {
+      "id":"automated-feed","ticket":"Our importer says the daily file is missing. Did the export happen?",
+      "worlds":[
+        {"id":"feed-blocked","finding":"delivery_blocked","paths":[["runs","delivery"]],"records":{"runs":["completed","The file was built at 02:30."],"delivery":["access_denied","The upload was rejected because the service credential no longer had write access."]}},
+        {"id":"feed-destination","finding":"destination_mismatch","paths":[["runs","delivery","destination"]],"records":{"runs":["completed","The file was built at 02:30."],"delivery":["sent","feed/sandbox"],"destination":["expected","feed/import"]}}
+      ]
+    },
+    {
+      "id":"back-from-pause","ticket":"We expected the scheduled report to start again today, but nothing landed.",
+      "worlds":[
+        {"id":"pause-disabled","finding":"schedule_disabled","paths":[["runs","schedule"]],"records":{"runs":["no_run","There is no run for today."],"schedule":["disabled","The schedule is still paused."]}},
+        {"id":"pause-unknown","finding":"undetermined","paths":[["runs","delivery"]],"records":{"runs":["unavailable","Run records are not accessible for today."],"delivery":["unavailable","No delivery records can be retrieved."],"schedule":["enabled","The schedule is currently enabled; earlier status is not recorded."]}}
+      ]
+    },
+    {
+      "id":"partnership","ticket":"Our partner didn't receive the overnight data drop. What should we check?",
+      "worlds":[
+        {"id":"partner-failed","finding":"run_failed","paths":[["runs"]],"records":{"runs":["failed","The job failed during compression before delivery."],"schedule":["enabled","The overnight schedule fired normally."]}},
+        {"id":"partner-unknown","finding":"undetermined","paths":[["runs","delivery"]],"records":{"runs":["unavailable","Run information is missing after a retention change."],"delivery":["unavailable","The delivery system has no searchable receipt for that interval."]}}
+      ]
+    }
+  ]
+}

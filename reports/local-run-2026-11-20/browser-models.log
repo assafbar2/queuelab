@@ -1,0 +1,25 @@
+{
+  "attempted": 21,
+  "successes": 0,
+  "timeouts": 21,
+  "episodes_with_invalid_actions": 21,
+  "unsupported_claims": 21,
+  "unnecessary_questions": 0,
+  "matched_openings": 10,
+  "matched_opening_successes": 0
+}
+smollm2: browser verified 21 episodes and 126 raw turns.
+smollm2: saved browser recording of the three scenarios for the opening export ticket.
+{
+  "attempted": 21,
+  "successes": 0,
+  "timeouts": 21,
+  "episodes_with_invalid_actions": 21,
+  "unsupported_claims": 0,
+  "unnecessary_questions": 0,
+  "matched_openings": 10,
+  "matched_opening_successes": 0
+}
+falcon: browser verified 21 episodes and 126 raw turns.
+falcon: saved browser recording of the three scenarios for the opening export ticket.
+Combined recording: reports/local-run-2026-11-20/all-backends-replay.mp4

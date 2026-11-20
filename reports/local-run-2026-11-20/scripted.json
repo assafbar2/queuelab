@@ -1,0 +1,1303 @@
+{
+  "schema_version": 1,
+  "split": "development-pilot",
+  "provenance": "Draft synthetic cases authored for QueueLab; practitioner review pending.",
+  "fixture_sha256": "7f88f9b6e0911208d3dfa47bdc8c8b46f3448118116644f4f494b3546196b9d7",
+  "opening_ids": [
+    "after-upgrade",
+    "empty-folder",
+    "team-migration",
+    "weekly-rollup",
+    "destination-cutover",
+    "archive-gap",
+    "month-end",
+    "automated-feed",
+    "back-from-pause",
+    "partnership"
+  ],
+  "backend": {
+    "kind": "rules",
+    "label": "Scripted reference (not a model)"
+  },
+  "environment": {
+    "python": "3.14.7",
+    "system": "Darwin",
+    "arch": "arm64"
+  },
+  "episodes": [
+    {
+      "opening_id": "after-upgrade",
+      "world_id": "upgrade-disabled",
+      "opening": {
+        "customer_message": "Our nightly export stopped arriving after the upgrade.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-6e8304130f95",
+            "status": "no_run",
+            "value": "No run since the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-b0440dce13f4",
+            "status": "disabled",
+            "value": "The schedule is off."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"schedule_disabled\", \"next_step\": \"review_and_enable_schedule\", \"evidence\": [\"obs-6e8304130f95\", \"obs-b0440dce13f4\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "schedule_disabled",
+            "next_step": "review_and_enable_schedule",
+            "evidence": [
+              "obs-6e8304130f95",
+              "obs-b0440dce13f4"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "after-upgrade",
+      "world_id": "upgrade-destination",
+      "opening": {
+        "customer_message": "Our nightly export stopped arriving after the upgrade.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0f62a51e2f40",
+            "status": "completed",
+            "value": "The export completed after the upgrade."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-59186b580d46",
+            "status": "sent",
+            "value": "archive-east/old"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-f48bba94a55c",
+            "status": "expected",
+            "value": "archive-east/current"
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-0f62a51e2f40\", \"obs-59186b580d46\", \"obs-f48bba94a55c\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-0f62a51e2f40",
+              "obs-59186b580d46",
+              "obs-f48bba94a55c"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "after-upgrade",
+      "world_id": "upgrade-unknown",
+      "opening": {
+        "customer_message": "Our nightly export stopped arriving after the upgrade.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f7b27ea10f02",
+            "status": "unavailable",
+            "value": "Run records expired."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-d49fe86ce6b8",
+            "status": "unavailable",
+            "value": "No delivery receipt remains."
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"undetermined\", \"next_step\": \"recover_diagnostic_records\", \"evidence\": [\"obs-f7b27ea10f02\", \"obs-d49fe86ce6b8\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "undetermined",
+            "next_step": "recover_diagnostic_records",
+            "evidence": [
+              "obs-f7b27ea10f02",
+              "obs-d49fe86ce6b8"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "empty-folder",
+      "world_id": "empty-blocked",
+      "opening": {
+        "customer_message": "The folder is empty again this morning. Can you see what happened to the report?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0c0c7852661f",
+            "status": "completed",
+            "value": "The report was generated at 05:00."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-91440f5a86bb",
+            "status": "access_denied",
+            "value": "The storage provider rejected the upload: write permission denied."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"delivery_blocked\", \"next_step\": \"review_delivery_access\", \"evidence\": [\"obs-0c0c7852661f\", \"obs-91440f5a86bb\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "delivery_blocked",
+            "next_step": "review_delivery_access",
+            "evidence": [
+              "obs-0c0c7852661f",
+              "obs-91440f5a86bb"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "empty-folder",
+      "world_id": "empty-failed",
+      "opening": {
+        "customer_message": "The folder is empty again this morning. Can you see what happened to the report?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-efa6ad2895d8",
+            "status": "failed",
+            "value": "The run stopped during CSV validation; error detail is retained."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"run_failed\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-efa6ad2895d8\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "run_failed",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-efa6ad2895d8"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "team-migration",
+      "world_id": "team-ask",
+      "opening": {
+        "customer_message": "We moved reporting to a new team. Finance didn't get today's file.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-17f611d0277f",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-2a7132833b32",
+            "status": "sent",
+            "value": "team-finance/shared"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-9edad06e9295",
+            "status": "unavailable",
+            "value": "No current destination preference is recorded."
+          }
+        },
+        {
+          "raw": "{\"action\": \"ask\", \"fact\": \"expected_destination\"}",
+          "action": {
+            "action": "ask",
+            "fact": "expected_destination"
+          },
+          "result": {
+            "evidence_id": "obs-1cdafcba49ae",
+            "status": "expected",
+            "value": "team-analytics/finance"
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-17f611d0277f\", \"obs-2a7132833b32\", \"obs-1cdafcba49ae\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-17f611d0277f",
+              "obs-2a7132833b32",
+              "obs-1cdafcba49ae"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "team-migration",
+      "world_id": "team-blocked",
+      "opening": {
+        "customer_message": "We moved reporting to a new team. Finance didn't get today's file.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-80684190e271",
+            "status": "completed",
+            "value": "Today's run completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-c097d2ce908f",
+            "status": "access_denied",
+            "value": "The new team storage rejected the writer identity."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"delivery_blocked\", \"next_step\": \"review_delivery_access\", \"evidence\": [\"obs-80684190e271\", \"obs-c097d2ce908f\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "delivery_blocked",
+            "next_step": "review_delivery_access",
+            "evidence": [
+              "obs-80684190e271",
+              "obs-c097d2ce908f"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "weekly-rollup",
+      "world_id": "rollup-disabled",
+      "opening": {
+        "customer_message": "Monday's rollup never showed up. Last week's did.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-9371333e61e1",
+            "status": "no_run",
+            "value": "No execution was created for Monday."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-8af4ca95feef",
+            "status": "disabled",
+            "value": "The weekly schedule was paused after last week's run."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"schedule_disabled\", \"next_step\": \"review_and_enable_schedule\", \"evidence\": [\"obs-9371333e61e1\", \"obs-8af4ca95feef\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "schedule_disabled",
+            "next_step": "review_and_enable_schedule",
+            "evidence": [
+              "obs-9371333e61e1",
+              "obs-8af4ca95feef"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "weekly-rollup",
+      "world_id": "rollup-failed",
+      "opening": {
+        "customer_message": "Monday's rollup never showed up. Last week's did.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-43a1cba54825",
+            "status": "failed",
+            "value": "Monday's execution failed on an upstream query timeout."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"run_failed\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-43a1cba54825\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "run_failed",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-43a1cba54825"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "destination-cutover",
+      "world_id": "cutover-destination",
+      "opening": {
+        "customer_message": "We switched folders yesterday and now we can't find today's export.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-5e8ab4927755",
+            "status": "completed",
+            "value": "The export ran on time."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-84d0395f2ae4",
+            "status": "sent",
+            "value": "reporting/legacy"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-b4b2ceec480c",
+            "status": "expected",
+            "value": "reporting/cutover"
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-5e8ab4927755\", \"obs-84d0395f2ae4\", \"obs-b4b2ceec480c\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-5e8ab4927755",
+              "obs-84d0395f2ae4",
+              "obs-b4b2ceec480c"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "destination-cutover",
+      "world_id": "cutover-coincidence",
+      "opening": {
+        "customer_message": "We switched folders yesterday and now we can't find today's export.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-2ccc9c66250d",
+            "status": "failed",
+            "value": "The data query failed before a file was produced."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"run_failed\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-2ccc9c66250d\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "run_failed",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-2ccc9c66250d"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "archive-gap",
+      "world_id": "archive-expired",
+      "opening": {
+        "customer_message": "We're missing the export for the first business day of last month.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-f1e52185adaf",
+            "status": "unavailable",
+            "value": "Run history for that date is beyond retention."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-cb3e0d004cd1",
+            "status": "unavailable",
+            "value": "Delivery history for that date is beyond retention."
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"undetermined\", \"next_step\": \"recover_diagnostic_records\", \"evidence\": [\"obs-f1e52185adaf\", \"obs-cb3e0d004cd1\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "undetermined",
+            "next_step": "recover_diagnostic_records",
+            "evidence": [
+              "obs-f1e52185adaf",
+              "obs-cb3e0d004cd1"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "archive-gap",
+      "world_id": "archive-blocked",
+      "opening": {
+        "customer_message": "We're missing the export for the first business day of last month.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-0a533bcd96e5",
+            "status": "completed",
+            "value": "An archived job record confirms completion."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-894364302e22",
+            "status": "access_denied",
+            "value": "Archived receipt: destination refused the file because the writer lacked access."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"delivery_blocked\", \"next_step\": \"review_delivery_access\", \"evidence\": [\"obs-0a533bcd96e5\", \"obs-894364302e22\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "delivery_blocked",
+            "next_step": "review_delivery_access",
+            "evidence": [
+              "obs-0a533bcd96e5",
+              "obs-894364302e22"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "month-end",
+      "world_id": "month-disabled",
+      "opening": {
+        "customer_message": "Can you check why the month-end export didn't reach our storage?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b2aa2d0aa734",
+            "status": "no_run",
+            "value": "No month-end job was created."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-035adb4c78ab",
+            "status": "disabled",
+            "value": "Recurring month-end export was switched off."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"schedule_disabled\", \"next_step\": \"review_and_enable_schedule\", \"evidence\": [\"obs-b2aa2d0aa734\", \"obs-035adb4c78ab\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "schedule_disabled",
+            "next_step": "review_and_enable_schedule",
+            "evidence": [
+              "obs-b2aa2d0aa734",
+              "obs-035adb4c78ab"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "month-end",
+      "world_id": "month-destination",
+      "opening": {
+        "customer_message": "Can you check why the month-end export didn't reach our storage?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-bd849a1d4dba",
+            "status": "completed",
+            "value": "The month-end export completed."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-f2aba5eba57d",
+            "status": "sent",
+            "value": "accounts/staging"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-c3482ba7843b",
+            "status": "expected",
+            "value": "accounts/close"
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-bd849a1d4dba\", \"obs-f2aba5eba57d\", \"obs-c3482ba7843b\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-bd849a1d4dba",
+              "obs-f2aba5eba57d",
+              "obs-c3482ba7843b"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "automated-feed",
+      "world_id": "feed-blocked",
+      "opening": {
+        "customer_message": "Our importer says the daily file is missing. Did the export happen?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-840fd1977386",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-65e460a1777b",
+            "status": "access_denied",
+            "value": "The upload was rejected because the service credential no longer had write access."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"delivery_blocked\", \"next_step\": \"review_delivery_access\", \"evidence\": [\"obs-840fd1977386\", \"obs-65e460a1777b\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "delivery_blocked",
+            "next_step": "review_delivery_access",
+            "evidence": [
+              "obs-840fd1977386",
+              "obs-65e460a1777b"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "delivery_blocked",
+        "expected_next_step": "review_delivery_access",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "automated-feed",
+      "world_id": "feed-destination",
+      "opening": {
+        "customer_message": "Our importer says the daily file is missing. Did the export happen?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-77d5fa500ddf",
+            "status": "completed",
+            "value": "The file was built at 02:30."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-475d7b0045f1",
+            "status": "sent",
+            "value": "feed/sandbox"
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"destination\"}",
+          "action": {
+            "action": "inspect",
+            "source": "destination"
+          },
+          "result": {
+            "evidence_id": "obs-8f9a74021718",
+            "status": "expected",
+            "value": "feed/import"
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"destination_mismatch\", \"next_step\": \"correct_destination\", \"evidence\": [\"obs-77d5fa500ddf\", \"obs-475d7b0045f1\", \"obs-8f9a74021718\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "destination_mismatch",
+            "next_step": "correct_destination",
+            "evidence": [
+              "obs-77d5fa500ddf",
+              "obs-475d7b0045f1",
+              "obs-8f9a74021718"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "destination_mismatch",
+        "expected_next_step": "correct_destination",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "back-from-pause",
+      "world_id": "pause-disabled",
+      "opening": {
+        "customer_message": "We expected the scheduled report to start again today, but nothing landed.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7b20c4dafcd",
+            "status": "no_run",
+            "value": "There is no run for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"schedule\"}",
+          "action": {
+            "action": "inspect",
+            "source": "schedule"
+          },
+          "result": {
+            "evidence_id": "obs-492fda305818",
+            "status": "disabled",
+            "value": "The schedule is still paused."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"schedule_disabled\", \"next_step\": \"review_and_enable_schedule\", \"evidence\": [\"obs-b7b20c4dafcd\", \"obs-492fda305818\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "schedule_disabled",
+            "next_step": "review_and_enable_schedule",
+            "evidence": [
+              "obs-b7b20c4dafcd",
+              "obs-492fda305818"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "schedule_disabled",
+        "expected_next_step": "review_and_enable_schedule",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "back-from-pause",
+      "world_id": "pause-unknown",
+      "opening": {
+        "customer_message": "We expected the scheduled report to start again today, but nothing landed.",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-b7e2323a1ec8",
+            "status": "unavailable",
+            "value": "Run records are not accessible for today."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-9e5e43a45adc",
+            "status": "unavailable",
+            "value": "No delivery records can be retrieved."
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"undetermined\", \"next_step\": \"recover_diagnostic_records\", \"evidence\": [\"obs-b7e2323a1ec8\", \"obs-9e5e43a45adc\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "undetermined",
+            "next_step": "recover_diagnostic_records",
+            "evidence": [
+              "obs-b7e2323a1ec8",
+              "obs-9e5e43a45adc"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "partnership",
+      "world_id": "partner-failed",
+      "opening": {
+        "customer_message": "Our partner didn't receive the overnight data drop. What should we check?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-ed90d1d68ec6",
+            "status": "failed",
+            "value": "The job failed during compression before delivery."
+          }
+        },
+        {
+          "raw": "{\"action\": \"recommend\", \"finding\": \"run_failed\", \"next_step\": \"inspect_run_error\", \"evidence\": [\"obs-ed90d1d68ec6\"]}",
+          "action": {
+            "action": "recommend",
+            "finding": "run_failed",
+            "next_step": "inspect_run_error",
+            "evidence": [
+              "obs-ed90d1d68ec6"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "run_failed",
+        "expected_next_step": "inspect_run_error",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    },
+    {
+      "opening_id": "partnership",
+      "world_id": "partner-unknown",
+      "opening": {
+        "customer_message": "Our partner didn't receive the overnight data drop. What should we check?",
+        "account": "fictional-export-account",
+        "clock": "2026-11-19T10:00:00Z"
+      },
+      "turns": [
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"runs\"}",
+          "action": {
+            "action": "inspect",
+            "source": "runs"
+          },
+          "result": {
+            "evidence_id": "obs-21df21263cb9",
+            "status": "unavailable",
+            "value": "Run information is missing after a retention change."
+          }
+        },
+        {
+          "raw": "{\"action\": \"inspect\", \"source\": \"delivery\"}",
+          "action": {
+            "action": "inspect",
+            "source": "delivery"
+          },
+          "result": {
+            "evidence_id": "obs-88432edf7f54",
+            "status": "unavailable",
+            "value": "The delivery system has no searchable receipt for that interval."
+          }
+        },
+        {
+          "raw": "{\"action\": \"escalate\", \"finding\": \"undetermined\", \"next_step\": \"recover_diagnostic_records\", \"evidence\": [\"obs-21df21263cb9\", \"obs-88432edf7f54\"]}",
+          "action": {
+            "action": "escalate",
+            "finding": "undetermined",
+            "next_step": "recover_diagnostic_records",
+            "evidence": [
+              "obs-21df21263cb9",
+              "obs-88432edf7f54"
+            ]
+          },
+          "result": {
+            "accepted_terminal": true
+          }
+        }
+      ],
+      "verdict": {
+        "outcome": "success",
+        "reason": "The finding, next step, and cited observations satisfy the fixture.",
+        "expected_finding": "undetermined",
+        "expected_next_step": "recover_diagnostic_records",
+        "unsupported_claim": false,
+        "invalid_actions": 0,
+        "unnecessary_questions": 0
+      }
+    }
+  ],
+  "metrics": {
+    "attempted": 21,
+    "successes": 21,
+    "timeouts": 0,
+    "episodes_with_invalid_actions": 0,
+    "unsupported_claims": 0,
+    "unnecessary_questions": 0,
+    "matched_openings": 10,
+    "matched_opening_successes": 10
+  }
+}

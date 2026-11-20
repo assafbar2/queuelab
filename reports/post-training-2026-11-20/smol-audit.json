@@ -1,0 +1,32 @@
+{
+  "base": {
+    "attempted": 60,
+    "successes": 0,
+    "timeouts": 60,
+    "episodes_with_invalid_actions": 60,
+    "unsupported_claims": 36,
+    "unnecessary_questions": 0,
+    "matched_openings": 30,
+    "matched_opening_successes": 0
+  },
+  "adapted": {
+    "attempted": 60,
+    "successes": 53,
+    "timeouts": 0,
+    "episodes_with_invalid_actions": 0,
+    "unsupported_claims": 7,
+    "unnecessary_questions": 0,
+    "matched_openings": 30,
+    "matched_opening_successes": 23
+  },
+  "gains": 53,
+  "regressions": 0,
+  "primary_delta": 0.8833333333333333,
+  "bootstrap_95_interval": [
+    0.8,
+    0.95
+  ],
+  "unsupported_claim_episode_delta": -29,
+  "met_measured_gain_rule": true,
+  "scope": "Synthetic holdout of known failure families; no independent practitioner review or production claim."
+}

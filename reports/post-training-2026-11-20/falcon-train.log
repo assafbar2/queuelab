@@ -1,0 +1,92 @@
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+{
+  "model": "tiiuae/Falcon-H1-Tiny-Tool-Calling-90M",
+  "revision": "fc099d791a229464b995fdd2fd24e8ffd2d699e8",
+  "fine_tune_type": "lora",
+  "num_layers": 24,
+  "lora_parameters": {
+    "rank": 8,
+    "scale": 2.0,
+    "dropout": 0.05,
+    "keys": [
+      "self_attn.q_proj",
+      "self_attn.v_proj"
+    ]
+  },
+  "seed": 42,
+  "steps": 180,
+  "batch_size": 4,
+  "learning_rate": 0.0003,
+  "base_parameters": 91131072,
+  "trainable_parameters": 319488,
+  "base_dtypes": [
+    "mlx.core.bfloat16",
+    "mlx.core.float32"
+  ],
+  "precision": "pinned checkpoint dtypes, no quantization",
+  "runtime": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.23.0"
+  },
+  "mask": "next assistant action and end-of-turn token only; prompt and padding excluded",
+  "largest_sequence": 481,
+  "mask_probe": {
+    "prompt": 393,
+    "target": 88
+  },
+  "data": {
+    "provenance": "Synthetic cases and deterministic reference decisions; no independent practitioner review.",
+    "partitions": {
+      "train": {
+        "groups": 40,
+        "worlds": 200,
+        "fixture_sha256": "b4047b2fcde3b08804d1bdf2c35d98c10c6bd0e9f0de5a021995860f900c394e",
+        "rows": 610,
+        "row_sha256": "5d5b176a50900f5c7ef8490a775dd1d94e83a9efa2ee5a5661d17c1471b6e484"
+      },
+      "valid": {
+        "groups": 20,
+        "worlds": 100,
+        "fixture_sha256": "107025a4e8c33b355163605da7b4fca07401cc05af6a94b74089ffbbff7aff01",
+        "rows": 305,
+        "row_sha256": "8ae7438d7852bef06408d316d066ffd6af1786dea4a420229c30e71691c37f77"
+      },
+      "holdout": {
+        "groups": 30,
+        "worlds": 60,
+        "fixture_sha256": "8e0da66ffe7f9f214e2a68a76e0d1f29519c210306495088d9daffa948febd0d"
+      }
+    }
+  }
+}
+  [1miter   train_loss     tok/s     tokens[0m
+     1    [1mval[0m [1m0.936[0m    2.81s
+    10    [1m0.555 ▼[0m    [1m   32[0m      1.5k
+    20    [1m0.518 ▼[0m    [1m   87[0m      3.1k
+    30    [1m0.191 ▼[0m    [1m   66[0m      4.2k
+    40    [1m0.103 ▼[0m    [1m   69[0m      5.3k
+    50    [1m0.069 ▼[0m    [1m   95[0m      6.9k
+    60    [1m0.172 ▲[0m    [1m   77[0m      8.2k
+    70    [1m0.064 ▼[0m    [1m   86[0m      9.5k
+    80    [1m0.081 ▲[0m    [1m   76[0m     10.9k
+    90    [1mval[0m [1m0.081[0m    4.05s
+    90    [1m0.055 ▼[0m    [1m   61[0m     11.7k
+   100    [1m0.075 ▲[0m    [1m   96[0m     13.5k
+   110    [1m0.034 ▼[0m    [1m   92[0m     14.9k
+   120    [1m0.050 ▲[0m    [1m   75[0m     16.2k
+   130    [1m0.080 ▲[0m    [1m   73[0m     17.5k
+   140    [1m0.032 ▼[0m    [1m   87[0m     19.1k
+   150    [1m0.039 ▲[0m    [1m   84[0m     20.6k
+   160    [1m0.013 ▼[0m    [1m   73[0m     21.7k
+   170    [1m0.018 ▲[0m    [1m   75[0m     22.9k
+   180    [1mval[0m [1m0.010[0m    3.91s
+   180    [1m0.011 ▼[0m    [1m   84[0m     24.5k
+[1mtrain[0m ██████████████████████████████ [1m100%[0m · [1m  180[0m/180
+{
+  "seconds": 345.69,
+  "optimizer_steps": 180,
+  "updated_lora_b_tensors": 48,
+  "adapter_sha256": "8e4c51fc287e9992d28bc5f259e6efa6b72a78561d5a13e196cd666f1f9a3d6a"
+}

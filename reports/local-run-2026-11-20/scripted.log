@@ -1,0 +1,65 @@
+Started 2026-11-20T08:41:59Z
+
+$ python3 -m harness run --backend rules --output reports/local-run-2026-11-20/scripted.json
+upgrade-disabled: success
+upgrade-destination: success
+upgrade-unknown: success
+empty-blocked: success
+empty-failed: success
+team-ask: success
+team-blocked: success
+rollup-disabled: success
+rollup-failed: success
+cutover-destination: success
+cutover-coincidence: success
+archive-expired: success
+archive-blocked: success
+month-disabled: success
+month-destination: success
+feed-blocked: success
+feed-destination: success
+pause-disabled: success
+pause-unknown: success
+partner-failed: success
+partner-unknown: success
+{
+  "attempted": 21,
+  "successes": 21,
+  "timeouts": 0,
+  "episodes_with_invalid_actions": 0,
+  "unsupported_claims": 0,
+  "unnecessary_questions": 0,
+  "matched_openings": 10,
+  "matched_opening_successes": 10
+}
+
+$ python3 -m harness rescore reports/local-run-2026-11-20/scripted.json
+{
+  "attempted": 21,
+  "successes": 21,
+  "timeouts": 0,
+  "episodes_with_invalid_actions": 0,
+  "unsupported_claims": 0,
+  "unnecessary_questions": 0,
+  "matched_openings": 10,
+  "matched_opening_successes": 10
+}
+
+$ python3 -m harness rescore docs/demo/pilot.json
+{
+  "attempted": 21,
+  "successes": 21,
+  "timeouts": 0,
+  "episodes_with_invalid_actions": 0,
+  "unsupported_claims": 0,
+  "unnecessary_questions": 0,
+  "matched_openings": 10,
+  "matched_opening_successes": 10
+}
+
+Fixture and runner fingerprints:
+7f88f9b6e0911208d3dfa47bdc8c8b46f3448118116644f4f494b3546196b9d7  fixtures/pilot.json
+4ddb0259cf1e8e189e46dd224547d1a02bf29ebf54abd5af21dcd079e584485c  harness/__main__.py
+c9816d8df75ab7b387815d363241389c8287de4e0db364f8dc2ae562f585a5b6  harness/backends.py
+e26b406fc8641d4bff22ed3152d08cdc228e566d07eea986a22571f37c9de6db  harness/simulator.py
+15df299432ccc5e87e7ec20f40e512a0b2d2feb44b14a32e609f6121a82a390f  uv.lock

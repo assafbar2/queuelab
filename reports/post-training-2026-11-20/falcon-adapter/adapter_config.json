@@ -1,0 +1,62 @@
+{
+  "model": "tiiuae/Falcon-H1-Tiny-Tool-Calling-90M",
+  "revision": "fc099d791a229464b995fdd2fd24e8ffd2d699e8",
+  "fine_tune_type": "lora",
+  "num_layers": 24,
+  "lora_parameters": {
+    "rank": 8,
+    "scale": 2.0,
+    "dropout": 0.05,
+    "keys": [
+      "self_attn.q_proj",
+      "self_attn.v_proj"
+    ]
+  },
+  "seed": 42,
+  "steps": 180,
+  "batch_size": 4,
+  "learning_rate": 0.0003,
+  "base_parameters": 91131072,
+  "trainable_parameters": 319488,
+  "base_dtypes": [
+    "mlx.core.bfloat16",
+    "mlx.core.float32"
+  ],
+  "precision": "pinned checkpoint dtypes, no quantization",
+  "runtime": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.23.0"
+  },
+  "mask": "next assistant action and end-of-turn token only; prompt and padding excluded",
+  "largest_sequence": 481,
+  "mask_probe": {
+    "prompt": 393,
+    "target": 88
+  },
+  "data": {
+    "provenance": "Synthetic cases and deterministic reference decisions; no independent practitioner review.",
+    "partitions": {
+      "train": {
+        "groups": 40,
+        "worlds": 200,
+        "fixture_sha256": "b4047b2fcde3b08804d1bdf2c35d98c10c6bd0e9f0de5a021995860f900c394e",
+        "rows": 610,
+        "row_sha256": "5d5b176a50900f5c7ef8490a775dd1d94e83a9efa2ee5a5661d17c1471b6e484"
+      },
+      "valid": {
+        "groups": 20,
+        "worlds": 100,
+        "fixture_sha256": "107025a4e8c33b355163605da7b4fca07401cc05af6a94b74089ffbbff7aff01",
+        "rows": 305,
+        "row_sha256": "8ae7438d7852bef06408d316d066ffd6af1786dea4a420229c30e71691c37f77"
+      },
+      "holdout": {
+        "groups": 30,
+        "worlds": 60,
+        "fixture_sha256": "8e0da66ffe7f9f214e2a68a76e0d1f29519c210306495088d9daffa948febd0d"
+      }
+    }
+  }
+}

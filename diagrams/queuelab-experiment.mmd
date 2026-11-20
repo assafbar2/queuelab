@@ -1,0 +1,50 @@
+---
+title: 'QueueLab: Can a tiny model learn to investigate?'
+config:
+  theme: base
+  fontFamily: 'Helvetica, Arial, sans-serif'
+  themeVariables:
+    fontSize: '17px'
+    textColor: '#111e35'
+    lineColor: '#768ba5'
+    edgeLabelBackground: '#eef3f9'
+  flowchart:
+    htmlLabels: false
+    nodeSpacing: 24
+    rankSpacing: 29
+    padding: 12
+    wrappingWidth: 295
+    curve: basis
+---
+flowchart TB
+    Ticket["SAME TICKET · THREE POSSIBLE WORLDS<br/>“Our nightly export stopped arriving after the upgrade.”"]
+
+    Ticket --> Schedule["A · SCHEDULE DISABLED<br/>No run + schedule disabled<br/>→ Review and re-enable schedule"]
+    Ticket --> Destination["B · WRONG DESTINATION<br/>Run succeeded + receipt shows old destination<br/>→ Recommend correcting destination"]
+    Ticket --> Missing["C · EVIDENCE UNAVAILABLE<br/>Run records expired + no delivery evidence<br/>→ Escalate with a next check"]
+
+    Schedule --> Simulator["SAME READ-ONLY SIMULATOR<br/>Inspect or ask, then recommend or escalate · 6 actions max"]
+    Destination --> Simulator
+    Missing --> Simulator
+
+    Simulator --> Base["BEFORE FINE-TUNING<br/>Unchanged base checkpoint"]
+    Simulator --> Adapted["AFTER FINE-TUNING<br/>Same base + LoRA adapter<br/>Target: 200 reviewed synthetic traces"]
+
+    Base --> Score["DETERMINISTIC GRADER · SAME HELD-OUT CASES<br/>Right decision + next step + evidence actually observed"]
+    Adapted --> Score
+    Score --> Compare["COMPARE AND REPLAY<br/>Evidence-backed success · Unsupported claims · Side-by-side traces"]
+
+    classDef ticket fill:#142944,stroke:#142944,color:#fff,stroke-width:2px;
+    classDef world fill:#ffffff,stroke:#9aacbf,color:#142944,stroke-width:1.3px;
+    classDef unknown fill:#fff5df,stroke:#c89536,color:#563b0e,stroke-width:1.3px;
+    classDef shared fill:#e8eff9,stroke:#6886ae,color:#142944,stroke-width:1.5px;
+    classDef control fill:#edf2f8,stroke:#829ab8,color:#142944,stroke-width:1.5px;
+    classDef adapter fill:#d8f3ec,stroke:#238677,color:#0c5046,stroke-width:1.5px;
+    classDef result fill:#142944,stroke:#142944,color:#fff,stroke-width:2px;
+    class Ticket ticket;
+    class Schedule,Destination world;
+    class Missing unknown;
+    class Simulator,Score shared;
+    class Base control;
+    class Adapted adapter;
+    class Compare result;

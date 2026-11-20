@@ -1,0 +1,38 @@
+Started 2026-11-20T08:48:47Z
+
+Full 21-world SmolLM2 pilot: project runner, float32, Apple Metal
+Platform: macOS-26.5.1-arm64-arm-64bit-Mach-O
+upgrade-disabled: timeout
+upgrade-destination: timeout
+upgrade-unknown: timeout
+empty-blocked: timeout
+empty-failed: timeout
+team-ask: timeout
+team-blocked: timeout
+rollup-disabled: timeout
+rollup-failed: timeout
+cutover-destination: timeout
+cutover-coincidence: timeout
+archive-expired: timeout
+archive-blocked: timeout
+month-disabled: timeout
+month-destination: timeout
+feed-blocked: timeout
+feed-destination: timeout
+pause-disabled: timeout
+pause-unknown: timeout
+partner-failed: timeout
+partner-unknown: timeout
+Run seconds: 534.3
+{
+  "attempted": 21,
+  "successes": 0,
+  "timeouts": 21,
+  "episodes_with_invalid_actions": 21,
+  "unsupported_claims": 21,
+  "unnecessary_questions": 0,
+  "matched_openings": 10,
+  "matched_opening_successes": 0
+}
+Model-free rescore: {"attempted": 21, "successes": 0, "timeouts": 21, "episodes_with_invalid_actions": 21, "unsupported_claims": 21, "unnecessary_questions": 0, "matched_openings": 10, "matched_opening_successes": 0}
+Finished 2026-11-20T08:57:45Z
