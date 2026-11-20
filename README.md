@@ -12,15 +12,15 @@ We trained and reloaded real LoRA adapters for both models. On 60 held-out ficti
 
 ![Measured before-and-after scores: SmolLM2 0/60 to 53/60; Falcon 0/60 to 3/60.](reports/post-training-2026-11-20/scorecard.png)
 
-[See the measured scorecard and raw traces](reports/post-training-2026-11-20/README.md#measured-results) · [Open the recorded investigations](docs/post-training/index.html) · [Model and data notes](docs/MODEL-AND-DATA.md)
+[Open the recorded investigations](https://assafbar2.github.io/queuelab/post-training/) · [See the measured scorecard and raw traces](reports/post-training-2026-11-20/README.md#measured-results) · [Model and data notes](docs/MODEL-AND-DATA.md)
 
-Start with the recorded missing-export investigation in the [run record](reports/post-training-2026-11-20/README.md#inspect-a-real-before-and-after-case). It shows what SmolLM2 looked up after training that it missed before. To use the interactive replay from GitHub, download the HTML file and open it in your browser. It needs no model or API key.
+Start with the recorded missing-export investigation in the [run record](reports/post-training-2026-11-20/README.md#inspect-a-real-before-and-after-case). It shows what SmolLM2 looked up after training that it missed before. The replay needs no model or API key. You can also download the [standalone HTML replay](docs/post-training/index.html) and open it in your browser.
 
 If you want to see the setup, [watch the post-training animation](diagrams/queuelab-post-training.gif) or [open the detailed diagram](diagrams/queuelab-experiment.png). The animation’s numbers are illustrative; the scorecard above is the measured run.
 
 ## What you can see today
 
-The pilot has **10 draft tickets and 21 possible scenarios**. A simple checklist written in code completed all 21. The [local browser replay](docs/PILOT.md#watch-the-local-replay) shows what that checklist looked up and why the grader accepted its decisions. It’s a recording of a scripted run; the AI didn’t solve those tickets. Once it’s published, viewers will only need a browser.
+The pilot has **10 draft tickets and 21 possible scenarios**. A simple checklist written in code completed all 21. The [scripted browser replay](https://assafbar2.github.io/queuelab/demo/) shows what that checklist looked up and why the grader accepted its decisions. It’s a recording of a scripted run; the AI didn’t solve those tickets.
 
 [See two versions of the same ticket side by side](diagrams/queuelab-replay-storyboard.svg): one export didn’t run; the other went to the old folder.
 

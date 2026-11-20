@@ -53,4 +53,4 @@ python3 -m training.scorecard --run "$run" --output /tmp/queuelab-scorecard.svg
 
 The replay is self-contained. Open the HTML file in a browser, switch models and cases, and unfold each action to inspect the raw model reply and the simulator's observation.
 
-The audited browser replay is also staged at `docs/post-training/index.html`. With the local server from the [pilot guide](PILOT.md#watch-the-local-replay) running, open `/post-training/`. That path is ready for static hosting after the release is approved; this run did not publish it.
+The audited [public replay](https://assafbar2.github.io/queuelab/post-training/) is served from `docs/post-training/index.html`. With the local server from the [pilot guide](PILOT.md#watch-the-local-replay) running, open `/post-training/` to view a local copy.
